@@ -1,0 +1,49 @@
+/* RECIPES CARD */
+
+.recipes-count-card {
+
+  width: 230px;
+  height: 120px;
+  position: relative;
+}
+
+.recipes-count-card .content {
+
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  text-align: center;
+
+  text-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+
+.recipes {
+
+  font-size: 26px;
+  font-weight: 700;
+  color: #c45100;
+}
+
+.text {
+
+  font-size: 12px;
+  margin: 4px 0;
+}
+
+.authors {
+
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--green);
+}
+
+.authors span {
+
+  margin-left: 4px;
+  font-size: 12px;
+  color: var(--text-main);
+}

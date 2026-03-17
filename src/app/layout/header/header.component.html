@@ -1,1 +1,32 @@
-<p>header works!</p>
+<header>
+    <div class="mini-navbar-wrap">
+        <div class="logo-wrap">
+            <img src="/images/logo.png">
+            <p class="logo">Споделяме помежду си рецепти с любов и грижа</p>
+        </div>
+        <div class="mini-navbar">
+            @if (true) {
+            <ul>
+                <li>
+                    <a routerLink="/login" routerLinkActive="active">Вход</a>
+                </li>
+                <li>
+                    <a routerLink="/register" routerLinkActive="active">Регистрация</a>
+                </li>
+            </ul>
+            }
+        </div>
+        <app-recipes-count></app-recipes-count>
+    </div>
+    
+    <nav>
+        <ul>
+            <li>
+                <a routerLink="/home" routerLinkActive="active">Начало</a>
+            </li>
+            <li>
+                <a routerLink="/recipes" routerLinkActive="active">Рецепти</a>
+            </li>
+        </ul>
+    </nav>
+</header>

@@ -1,0 +1,99 @@
+header {
+  background: white;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+/* TOP BAR */
+
+.mini-navbar-wrap {
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* LOGO */
+
+.logo-wrap {
+
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.logo-wrap img {
+  width: 220px;
+}
+
+.logo {
+
+  font-size: 14px;
+  color: var(--text-light);
+  max-width: 330px;
+}
+
+/* LOGIN / REGISTER */
+
+.mini-navbar ul {
+
+  display: flex;
+  gap: 20px;
+
+  list-style: none;
+}
+
+.mini-navbar a {
+
+  font-weight: 500;
+  color: var(--text-main);
+  border-radius: 6px;
+  transition: 0.2s;
+}
+
+.mini-navbar a:hover {
+
+  background: var(--background-soft);
+  color: var(--primary);
+}
+
+/* MAIN NAV */
+
+nav {
+
+  border-top: 1px solid var(--border-soft);
+  background: var(--background-soft);
+}
+
+nav ul {
+
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+
+  padding: 14px 0;
+
+  list-style: none;
+}
+
+nav a {
+
+  font-weight: 600;
+  color: var(--text-main);
+
+  padding: 6px 10px;
+  border-radius: 6px;
+
+  transition: 0.2s;
+}
+
+nav a:hover {
+
+  color: var(--primary);
+}
+
+nav a.active {
+
+  color: var(--primary);
+}
