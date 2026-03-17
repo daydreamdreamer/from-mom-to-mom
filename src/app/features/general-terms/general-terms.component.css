@@ -1,0 +1,29 @@
+.terms-page {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 0 20px;
+    line-height: 1.7;
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-soft);
+}
+
+.terms-page h1 {
+    font-size: 36px;
+    margin-bottom: 25px;
+    color: var(--primary);
+}
+
+.terms-page h2 {
+    font-size: 22px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    color: var(--text-main);
+}
+
+.terms-page p {
+    margin-bottom: 15px;
+    color: var(--text-light);
+    font-size: 16px;
+}

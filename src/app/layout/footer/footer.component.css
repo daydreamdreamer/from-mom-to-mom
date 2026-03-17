@@ -1,0 +1,45 @@
+.mini-navbar-wrap {
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* LOGO */
+
+.logo-text-wrap {
+
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.logo-text-wrap img {
+  width: 160px;
+}
+
+/* LOGIN / REGISTER */
+
+.mini-navbar ul {
+
+  display: flex;
+  gap: 20px;
+
+  list-style: none;
+}
+
+.mini-navbar a {
+
+  font-weight: 500;
+  color: var(--text-main);
+  border-radius: 6px;
+  transition: 0.2s;
+}
+
+.mini-navbar a:hover {
+
+  background: var(--background-soft);
+  color: var(--primary);
+}

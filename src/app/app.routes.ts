@@ -6,6 +6,8 @@ import { NotFoundComponent } from './features/not-found/not-found.component';
 import { LoginComponent } from './features/auth/login/login.component';
 import { RegisterComponent } from './features/auth/register/register.component';
 import { RecipeContentComponent } from './features/recipes/recipe-content/recipe-content.component';
+import { ForUsComponent } from './features/for-us/for-us.component';
+import { GeneralTermsComponent } from './features/general-terms/general-terms.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' }, 
@@ -16,6 +18,9 @@ export const routes: Routes = [
 
     { path: 'recipes', component: RecipesComponent },
     { path: 'recipes/:recipeId', component: RecipeContentComponent},
+
+    { path: 'forus', component: ForUsComponent },
+    { path: 'terms', component: GeneralTermsComponent},
 
     {path: '**', component: NotFoundComponent}
 ];
