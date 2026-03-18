@@ -8,6 +8,7 @@ import { RegisterComponent } from './features/auth/register/register.component';
 import { RecipeContentComponent } from './features/recipes/recipe-content/recipe-content.component';
 import { ForUsComponent } from './features/for-us/for-us.component';
 import { GeneralTermsComponent } from './features/general-terms/general-terms.component';
+import { ProfileComponent } from './features/profile/profile.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' }, 
@@ -21,6 +22,8 @@ export const routes: Routes = [
 
     { path: 'forus', component: ForUsComponent },
     { path: 'terms', component: GeneralTermsComponent},
+
+    { path: "profile", component: ProfileComponent }, //, canActivate: [authGuard]
 
     {path: '**', component: NotFoundComponent}
 ];

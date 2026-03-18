@@ -43,3 +43,8 @@
   background: var(--background-soft);
   color: var(--primary);
 }
+
+.mini-navbar a.active {
+
+  color: var(--primary);
+}
