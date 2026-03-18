@@ -1,11 +1,46 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
+import { Recipe } from '../../../shared/interfaces/recipe';
+import { RecentRecipesItemComponent } from '../../../shared/components/recent-recipes-item/recent-recipes-item.component';
 
 @Component({
   selector: 'app-recent-recipes',
-  imports: [],
+  imports: [RecentRecipesItemComponent],
   templateUrl: './recent-recipes.component.html',
   styleUrl: './recent-recipes.component.css'
 })
-export class RecentRecipesComponent {
 
+export class RecentRecipesComponent {
+  latestRecipes: Recipe[] = [];
+
+  ngOnInit(): void {
+    //dummy data
+    this.latestRecipes = [
+      {
+        _id: "123",
+        image: '/images/food1.jpeg',
+        recipeName: 'Кренвиршки',
+        type: 'Закуска',
+        created_at: '13 август 2025'
+      },
+      {
+        _id: "325",
+        image: '/images/food2.jpeg',
+        recipeName: 'Oрзо със зеленяши',
+        type: 'Обяд, вечеря',
+        created_at: '3 февруари 2026'
+      }
+    ];
+  }
+
+  currentIndex = signal(0);
+
+  next() {
+    this.currentIndex.update(i => (i + 1) % this.latestRecipes.length);
+  }
+
+  prev() {
+    this.currentIndex.update(i =>
+      (i - 1 + this.latestRecipes.length) % this.latestRecipes.length
+    );
+  }
 }

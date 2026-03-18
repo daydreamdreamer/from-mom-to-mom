@@ -1,0 +1,8 @@
+<a class="slide" [class.active]="active" [routerLink]="['/recipes', recipe._id]">
+    <img [src]="recipe.image" />
+    <div class="content">
+        <p>{{ recipe.type }}</p>
+        <h1>{{ recipe.recipeName }}</h1>
+        <p>{{ recipe.created_at }}</p>
+    </div>
+</a>

@@ -1,0 +1,21 @@
+.banner-recent-recipes {
+  position: relative;
+  height: 80vh;
+  overflow: hidden;
+}
+
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: rgba(255,255,255,0.7);
+  border: none;
+  font-size: 30px;
+  padding: 10px 15px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.prev { left: 20px; }
+.next { right: 20px; }

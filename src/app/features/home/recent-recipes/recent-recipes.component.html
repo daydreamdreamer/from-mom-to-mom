@@ -1,1 +1,10 @@
-<p>recent-recipes works!</p>
+<div class="banner-recent-recipes">
+    <div class="slider">
+        @for (latestRecipe of latestRecipes; let i = $index; track i) {
+        <app-recent-recipes-item [recipe]="latestRecipe" [active]="i === currentIndex()"></app-recent-recipes-item>
+        }
+    </div>
+
+    <button class="nav prev" (click)="prev(); $event.stopPropagation()">‹</button>
+    <button class="nav next" (click)="next(); $event.stopPropagation()">›</button>
+</div>
