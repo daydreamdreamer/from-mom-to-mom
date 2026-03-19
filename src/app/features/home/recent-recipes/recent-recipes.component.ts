@@ -19,14 +19,16 @@ export class RecentRecipesComponent implements OnInit {
         _id: "123",
         image: '/images/food1.jpeg',
         recipeName: 'Кренвиршки',
-        type: 'Закуска',
+        category: 'Закуска',
+        cookingTime: '1ч 20мин',
         created_at: '13 август 2025'
       },
       {
         _id: "325",
         image: '/images/food2.jpeg',
         recipeName: 'Oрзо със зеленяши',
-        type: 'Обяд, вечеря',
+        category: 'Обяд, вечеря',
+        cookingTime: '50мин',
         created_at: '3 февруари 2026'
       }
     ];

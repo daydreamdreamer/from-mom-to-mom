@@ -1,1 +1,21 @@
-<p>recipe-item works!</p>
+<div class="recipe-card">
+    <div class="image-wrapper">
+        <img [src]="recipe.image" alt="recipe" />
+    </div>
+    <div class="card-content">
+        <h3 class="recipe-name">{{ recipe.recipeName }}</h3>
+        <p class="cooking-time">
+            <i class="fa-regular fa-clock"></i>
+            {{ recipe.cookingTime }}
+        </p>
+        <div class="meta">
+            <span class="category">
+                {{ recipe.category }}
+            </span>
+            <div class="favorites">
+                <i class="fa-solid fa-heart"></i>
+                <span>{{ recipe.favorites }}</span>
+            </div>
+        </div>
+    </div>
+</div>

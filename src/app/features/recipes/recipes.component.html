@@ -1,1 +1,8 @@
-<p>recipes works!</p>
+<div class="recipes container">
+    <h2 class="recipes-title">Рецепти</h2>
+    <div class="recipes-grid">
+        @for (recipe of recipes; track recipe._id) {
+            <app-recipe-item [recipe]="recipe"></app-recipe-item>
+        }
+    </div>
+</div>

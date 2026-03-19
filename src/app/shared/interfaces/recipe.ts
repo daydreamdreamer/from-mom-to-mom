@@ -1,14 +1,14 @@
 export interface Recipe{
     _id: string,
     recipeName: string,
-    //coockingTime: number,
+    cookingTime?: string,
     //ingredients: string,
     //preparationDetails: string,
-    type: string, // "" | "", enum?
+    category: string, // "" | "", enum?
     image : string,
-    //favoriteCount: number,
-    created_at: string,
+    favorites?: number,
+    created_at?: string,
     //userId: {
-    //    userName: string
+    //   userName: string
     //}
 }
