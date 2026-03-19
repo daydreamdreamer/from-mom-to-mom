@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { Recipe } from '../../../shared/interfaces/recipe';
 import { RecentRecipesItemComponent } from '../../../shared/components/recent-recipes-item/recent-recipes-item.component';
 
@@ -9,7 +9,7 @@ import { RecentRecipesItemComponent } from '../../../shared/components/recent-re
   styleUrl: './recent-recipes.component.css'
 })
 
-export class RecentRecipesComponent {
+export class RecentRecipesComponent implements OnInit {
   latestRecipes: Recipe[] = [];
 
   ngOnInit(): void {

@@ -1,0 +1,12 @@
+.super-mamas-preview {
+    margin: 50px auto;
+    text-align: center;
+}
+
+.super-mamas-list {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    padding-top: 30px;
+}
