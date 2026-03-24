@@ -15,38 +15,53 @@ export class SuperMamasComponent implements OnInit {
     this.superMamas = [
       {
         _id: "1",
-        username: 'Мария',
+        firstName: 'Мария',
+        lastName: 'Николова',
+        email: "dsfsd@as.ss",
         city: 'София',
         favorites: 24,
-        profilePic: '/images/profile-pic.png'
+        profilePic: '/images/profile-pic.png',
+        created_at: '24.04.2026'
       },
       {
         _id: "2",
-        username: 'Елена',
+        firstName: 'Елена',
+        lastName: 'Николова',
+        email: "dsfsd@as.ss",
         city: 'Пловдив',
         favorites: 18,
-        profilePic: '/images/profile-pic.png'
+        profilePic: '/images/profile-pic.png',
+        created_at: '24.04.2026'
       },
       {
         _id: "3",
-        username: 'Ива',
+        firstName: 'Ива',
+        lastName: 'Николова',
+        email: "dsfsd@as.ss",
         city: 'Варна',
         favorites: 32,
-        profilePic: '/images/profile-pic.png'
+        profilePic: '/images/profile-pic.png',
+        created_at: '24.04.2026'
       },
       {
         _id: "4",
-        username: 'Десислава',
+        firstName: 'Десислава',
+        lastName: 'Николова',
+        email: "dsfsd@as.ss",
         city: 'Бургас',
         favorites: 15,
-        profilePic: '/images/profile-pic.png'
+        profilePic: '/images/profile-pic.png',
+        created_at: '24.04.2026'
       },
       {
         _id: "5",
-        username: 'Анна',
+        firstName: 'Анна',
+        lastName: 'Николова',
+        email: "dsfsd@as.ss",
         city: 'Русе',
         favorites: 27,
-        profilePic: '/images/profile-pic.png'
+        profilePic: '/images/profile-pic.png',
+        created_at: '24.04.2026'
       }
     ];
   }
