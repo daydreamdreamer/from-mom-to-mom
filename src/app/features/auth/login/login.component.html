@@ -1,7 +1,7 @@
 <div class="login container">
   <div class="card">
     <div class="header">
-      <img src="assets/images/rolling-pin.png" class="logo" alt="logo">
+      <img src="/images/logo-text.png" class="logo" alt="logo">
       <h2>Добре дошла отново</h2>
       <p>Влез в профила си и продължи да готвиш</p>
     </div>
@@ -12,8 +12,7 @@
         <div class="input-wrapper">
           <i class="fa fa-envelope"></i>
           <input 
-          appInputError 
-          class="input-error" 
+          appInputError
           type="text" 
           id="email"
           name="email"
@@ -53,7 +52,11 @@
       }
 
       <button class="btn" type="submit" [disabled]="loginForm.invalid || isLoading">
-        Вход
+        @if(!isLoading) {
+          <span>Вход</span>
+        } @else {
+          <span class="spinner"></span>
+        }
       </button>
 
     </form>

@@ -1,11 +1,82 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
+import { AuthService } from '../../../core/services/auth.service';
+import { emailValidator } from '../../../shared/validators/email.validator';
+import { passwordsMatchValidator } from '../../../shared/validators/passwords-match.validator';
+import { InputErrorDirective } from '../../../shared/directives/input-error.directive';
+
 
 @Component({
   selector: 'app-register',
-  imports: [],
+  imports: [ReactiveFormsModule, RouterLink, InputErrorDirective],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
+  private router = inject(Router);
+  private authService = inject(AuthService);
+  private fb = inject(FormBuilder);
 
+  cities: string[] = [
+    'София', 'Пловдив', 'Варна', 'Бургас', 'Русе',
+    'Стара Загора', 'Плевен', 'Сливен', 'Добрич', 'Враца', 'Видин'
+  ];
+
+  registerForm: FormGroup = this.fb.group({
+    firstName: ["", [Validators.required, Validators.minLength(2)]],
+    lastName: ["", [Validators.required, Validators.minLength(2)]],
+    email: ["", [Validators.required, emailValidator()]],
+    city: [""],
+    age: [""],
+    passwords: this.fb.group(
+      {
+        password: ["", [Validators.required, Validators.minLength(5)]],
+        rePassword: ["", [Validators.required, Validators.minLength(5)]],
+      },
+      { validators: passwordsMatchValidator })
+  });
+
+  isLoading = false;
+  errorMessage = '';
+
+  get passwordsGroup(): FormGroup {
+    return this.registerForm.get('passwords') as FormGroup;
+  }
+
+  onRegister(): void {
+    console.log("22323");
+    if (this.registerForm.invalid) {
+      console.log("dfsf");
+      this.registerForm.markAllAsTouched();
+      return;
+    }
+
+    this.isLoading = true;
+    this.errorMessage = '';
+
+    const { firstName, lastName, email, city, age, passwords } = this.registerForm.value;
+
+    const userData = {
+      firstName,
+      lastName,
+      email,
+      city,
+      age,
+      password: passwords.password
+    }
+
+    /* this.authService.register(userData).subscribe({
+      next: (user) => {
+        this.authService.setSession(user);
+        this.isLoading = false;
+        this.router.navigate(["/recipes"]);
+      },
+      error: (err) => {
+        this.isLoading = false;
+        this.errorMessage = err.error?.message || 'Неусепешна регистрация. Опитай отново';
+      }
+    }) */
+
+  }
 }

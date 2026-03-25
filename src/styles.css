@@ -154,3 +154,8 @@ img {
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+input.input-error {
+  border-color: rgb(255, 80, 80) !important;
+  background-color: #fff5f5 !important;
+}
