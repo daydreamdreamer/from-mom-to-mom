@@ -1,1 +1,70 @@
-<p>login works!</p>
+<div class="login container">
+  <div class="card">
+    <div class="header">
+      <img src="assets/images/rolling-pin.png" class="logo" alt="logo">
+      <h2>Добре дошла отново</h2>
+      <p>Влез в профила си и продължи да готвиш</p>
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+
+      <div class="form-group">
+        <div class="input-wrapper">
+          <i class="fa fa-envelope"></i>
+          <input 
+          appInputError 
+          class="input-error" 
+          type="text" 
+          id="email"
+          name="email"
+          placeholder="Имейл" 
+          formControlName="email">
+        </div>
+      
+        @if (loginForm.get('email')?.touched && loginForm.get('email')?.invalid){
+        <p class="error">
+            Невалиден имейл.
+          </p>
+        }
+      </div>
+      
+      <div class="form-group">
+        <div class="input-wrapper">
+          <i class="fa fa-lock"></i>
+          <input 
+          appInputError
+          type="password" 
+          id="password"
+          name="password"
+          placeholder="Парола" 
+          formControlName="password">
+          </div>
+
+        @if (loginForm.get('password')?.touched && loginForm.get('password')?.invalid){
+        <p class="error">
+          Паролата трябва да съдържа поне 5 знака.
+        </p>
+        }
+        
+      </div>
+
+      @if (errorMessage){
+        <p class="error">{{errorMessage}}</p>
+      }
+
+      <button class="btn" type="submit" [disabled]="loginForm.invalid || isLoading">
+        Вход
+      </button>
+
+    </form>
+    
+    <div class="footer">
+      <p>
+        Нямаш профил?
+        <a routerLink="/register">Регистрирай се от тук</a>
+      </p>
+    </div>
+
+  </div>
+
+</div>
