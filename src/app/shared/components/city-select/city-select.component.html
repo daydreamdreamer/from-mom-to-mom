@@ -1,0 +1,14 @@
+<div class="form-group" [formGroup]="form">
+  <i class="fa fa-map-marker"></i>
+
+  <select [formControlName]="controlName">
+    <option value="">Избери град</option>
+
+    @for(city of cities; track city.id){
+      <option [value]="city.id">
+        {{ city.name }}
+      </option>
+    }
+  </select>
+
+</div>

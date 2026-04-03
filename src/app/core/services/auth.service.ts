@@ -1,5 +1,5 @@
 import { Injectable, inject, signal, computed } from '@angular/core';
-import { ProfileUpdateData, User, UserForAuth, LoginCredentials } from '../../shared/interfaces/user';
+import { UserProfileUpdate, User, UserForAuth, LoginCredentials } from '../../shared/interfaces/user';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -31,7 +31,7 @@ export class AuthService {
     return this.http.get<User>(`${this.apiUrl}/users/profile`, { withCredentials: true });
   }
 
-  updateProfile(data: ProfileUpdateData): Observable<User> {
+  updateProfile(data: UserProfileUpdate): Observable<User> {
     return this.http.put<User>(`${this.apiUrl}/users/profile`, data, { withCredentials: true });
   }
 

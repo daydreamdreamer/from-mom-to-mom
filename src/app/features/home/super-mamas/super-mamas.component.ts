@@ -18,7 +18,7 @@ export class SuperMamasComponent implements OnInit {
         firstName: 'Мария',
         lastName: 'Николова',
         email: "dsfsd@as.ss",
-        city: 'София',
+        cityId: 3,
         favorites: 24,
         profilePic: '/images/profile-pic.png',
         created_at: '24.04.2026'
@@ -28,7 +28,7 @@ export class SuperMamasComponent implements OnInit {
         firstName: 'Елена',
         lastName: 'Николова',
         email: "dsfsd@as.ss",
-        city: 'Пловдив',
+        cityId: 8,
         favorites: 18,
         profilePic: '/images/profile-pic.png',
         created_at: '24.04.2026'
@@ -38,7 +38,7 @@ export class SuperMamasComponent implements OnInit {
         firstName: 'Ива',
         lastName: 'Николова',
         email: "dsfsd@as.ss",
-        city: 'Варна',
+        cityId: 9,
         favorites: 32,
         profilePic: '/images/profile-pic.png',
         created_at: '24.04.2026'
@@ -48,7 +48,7 @@ export class SuperMamasComponent implements OnInit {
         firstName: 'Десислава',
         lastName: 'Николова',
         email: "dsfsd@as.ss",
-        city: 'Бургас',
+        cityId: 3,
         favorites: 15,
         profilePic: '/images/profile-pic.png',
         created_at: '24.04.2026'
@@ -58,7 +58,7 @@ export class SuperMamasComponent implements OnInit {
         firstName: 'Анна',
         lastName: 'Николова',
         email: "dsfsd@as.ss",
-        city: 'Русе',
+        cityId: 3,
         favorites: 27,
         profilePic: '/images/profile-pic.png',
         created_at: '24.04.2026'

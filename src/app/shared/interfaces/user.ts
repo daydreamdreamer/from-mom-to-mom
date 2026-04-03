@@ -5,10 +5,10 @@ export interface User{
     //username: string
     email: string,
     age?: number,
-    city?: string,
-    favorites: number,
+    cityId?: number,
+    favorites?: number,
     recipes?: string[],
-    profilePic: string,
+    profilePic?: string,
     created_at: string
 }
 
@@ -23,7 +23,7 @@ export interface UserForAuth{
     email: string,
     password: string,
     age?: number,
-    city?: string
+    cityId?: number
 }
 
 export interface LoginCredentials {
@@ -31,10 +31,10 @@ export interface LoginCredentials {
     password: string
 }
 
-export interface ProfileUpdateData {
+export interface UserProfileUpdate {
     firstName: string,
     lastName: string,
     //username: string,
     age?: number,
-    city?: string
+    cityId?: number
 }
