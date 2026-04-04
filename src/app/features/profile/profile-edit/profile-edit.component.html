@@ -1,0 +1,48 @@
+<div class="profile-wrapper">
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+
+    <div class="profile-header">
+      <div class="avatar">
+        <img [src]="user?.profilePic || '/images/profile-pic.png'">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="profile-field">
+        <i class="fa fa-user"></i>
+        <input formControlName="firstName" placeholder="Име">
+      </div>
+
+      <div class="profile-field">
+        <i class="fa fa-user"></i>
+        <input formControlName="lastName" placeholder="Фамилия">
+      </div>
+    </div>
+
+    <div class="profile-field">
+      <i class="fa fa-envelope"></i>
+      <input formControlName="email" placeholder="Имейл" readonly>
+    </div>
+
+    <div class="profile-field">
+      <i class="fa fa-map-marker"></i>
+      <input formControlName="city" placeholder="Град">
+    </div>
+
+    <div class="profile-field">
+      <i class="fa fa-cake-candles"></i>
+      <input formControlName="age" placeholder="Години">
+    </div>
+
+    <div class="actions">
+      <button type="submit" class="primary-btn">
+        Запази
+      </button>
+
+      <button type="button" class="secondary-btn" (click)="cancel.emit()">
+        Откажи
+      </button>
+    </div>
+
+  </form>
+</div>

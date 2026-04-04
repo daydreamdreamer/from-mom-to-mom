@@ -1,0 +1,111 @@
+.profile-wrapper {
+  max-width: 420px;
+  margin: 40px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+/* HEADER */
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* AVATAR */
+.avatar img {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #f5a25d;
+}
+
+/* ROW (име + фамилия) */
+.row {
+  display: flex;
+  gap: 10px;
+}
+
+/* FIELD (като view mode) */
+.profile-field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f7f7f7;
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-bottom: 12px;
+  flex: 1;
+}
+
+.profile-field i {
+  color: #f57c00;
+  width: 18px;
+}
+
+/* INPUT */
+.profile-field input {
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%;
+  font-size: 14px;
+  color: #333;
+}
+
+/* readonly стил (email) */
+.profile-field input[readonly] {
+  color: #888;
+  cursor: not-allowed;
+}
+
+/* ACTIONS */
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* PRIMARY BUTTON (като registration) */
+.primary-btn {
+  flex: 1;
+  padding: 14px;
+  border-radius: 25px;
+  border: none;
+  background: linear-gradient(135deg, #f5a25d, #f7b267);
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.primary-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* SECONDARY BUTTON */
+.secondary-btn {
+  flex: 1;
+  padding: 14px;
+  border-radius: 25px;
+  border: none;
+  background: #eee;
+  color: #555;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.secondary-btn:hover {
+  background: #e0e0e0;
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+  .row {
+    flex-direction: column;
+  }
+}

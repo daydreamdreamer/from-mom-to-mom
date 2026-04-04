@@ -7,13 +7,22 @@
             <p class="logo">Споделяме помежду си рецепти с любов и грижа</p>
         </div>
         <div class="mini-navbar">
-            @if (true) {
+           @if (!isLoggedIn()) {
             <ul>
                 <li>
                     <a routerLink="/login" routerLinkActive="active">Вход</a>
                 </li>
                 <li>
                     <a routerLink="/register" routerLinkActive="active">Регистрация</a>
+                </li>
+            </ul>
+            }@else{
+                <ul>
+                <li>
+                    <a routerLink="/profile">{{username()}}</a>
+                </li>
+                <li>
+                    <a (click)="onLogout()">Изход</a>
                 </li>
             </ul>
             }

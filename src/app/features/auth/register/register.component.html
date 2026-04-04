@@ -6,81 +6,67 @@
             <p>Готви с любов и вдъхновение</p>
         </div>
         <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
-                <div class="form-row">
+            <div class="form-row">
 
-                    <div class="form-group">
-                        <div class="input-wrapper">
-                            <i class="fa fa-user"></i>
-                            <input 
-                            appInputError 
-                            type="text" 
-                            name="firstName"
-                            id="firstName"
-                            placeholder="Име" 
+                <div class="form-group">
+                    <div class="input-wrapper">
+                        <i class="fa fa-user"></i>
+                        <input appInputError type="text" name="firstName" id="firstName" placeholder="Име"
                             formControlName="firstName">
-                        </div>
-                        @if (registerForm.get('firstName')?.touched && registerForm.get('firstName')?.invalid){
-                            @if(registerForm.get("firstName")?.errors?.["required"]){
-                                <p class="error">
-                                        Името е задължително.
-                                </p>
-                            }
-                            @if(registerForm.get("firstName")?.errors?.["minlength"]){
-                                <p class="error">
-                                    Името трябва да съдържа поне 2 знака!
-                                </p>
-                            }
-                        }
                     </div>
-
-                    <div class="form-group">
-                        <div class="input-wrapper">
-                            <i class="fa fa-user"></i>
-                            <input 
-                            appInputError
-                            type="text" 
-                            name="lastName"
-                            id="lastName"
-                            placeholder="Фамилия" 
-                            formControlName="lastName">
-                        </div>
-                        
-                        @if (registerForm.get('lastName')?.touched && registerForm.get('lastName')?.invalid){
-                            @if(registerForm.get("lastName")?.errors?.["required"]){
-                                <p class="error">
-                                    Фамилията е задължителна.
-                                </p>
-                            }
-                            @if(registerForm.get("lastName")?.errors?.["minlength"]){
-                                <p class="error">
-                                    Фамилията трябва да съдържа поне 2 знака!
-                                </p>
-                            }
-                        }
-                    </div>
+                    @if (registerForm.get('firstName')?.touched && registerForm.get('firstName')?.invalid){
+                    @if(registerForm.get("firstName")?.errors?.["required"]){
+                    <p class="error">
+                        Името е задължително.
+                    </p>
+                    }
+                    @if(registerForm.get("firstName")?.errors?.["minlength"]){
+                    <p class="error">
+                        Името трябва да съдържа поне 2 знака!
+                    </p>
+                    }
+                    }
                 </div>
 
                 <div class="form-group">
                     <div class="input-wrapper">
-                        <i class="fa fa-envelope"></i>
-                        <input 
-                        appInputError 
-                        type="text" 
-                        placeholder="Имейл" 
-                        name="email"
-                        id="email"
-                        formControlName="email">
+                        <i class="fa fa-user"></i>
+                        <input appInputError type="text" name="lastName" id="lastName" placeholder="Фамилия"
+                            formControlName="lastName">
                     </div>
-                    
-                    @if (registerForm.get('email')?.touched && registerForm.get('email')?.invalid){
-                        <p class="error">
-                            Невалиден имейл!
-                        </p>
+
+                    @if (registerForm.get('lastName')?.touched && registerForm.get('lastName')?.invalid){
+                    @if(registerForm.get("lastName")?.errors?.["required"]){
+                    <p class="error">
+                        Фамилията е задължителна.
+                    </p>
+                    }
+                    @if(registerForm.get("lastName")?.errors?.["minlength"]){
+                    <p class="error">
+                        Фамилията трябва да съдържа поне 2 знака!
+                    </p>
+                    }
                     }
                 </div>
-            
+            </div>
 
-                <div class="form-group">
+            <div class="form-group">
+                <div class="input-wrapper">
+                    <i class="fa fa-envelope"></i>
+                    <input appInputError type="text" placeholder="Имейл" name="email" id="email"
+                        formControlName="email">
+                </div>
+
+                @if (registerForm.get('email')?.touched && registerForm.get('email')?.invalid){
+                <p class="error">
+                    Невалиден имейл!
+                </p>
+                }
+            </div>
+
+            <app-city-select [form]="registerForm" controlName="city">
+            </app-city-select>
+            <!--  <div class="form-group">
                     <div class="input-wrapper">
                         <i class="fa fa-location-dot"></i>
                         <select formControlName="city">
@@ -90,64 +76,51 @@
                             }
                         </select>
                     </div>
+                </div> -->
+
+            <div class="form-group">
+                <div class="input-wrapper">
+                    <i class="fa fa-cake-candles"></i>
+                    <input type="number" name="age" id="age" placeholder="Години" formControlName="age">
+                </div>
+            </div>
+
+            <ng-container formGroupName="passwords">
+                <div class="form-group">
+                    <div class="input-wrapper">
+                        <i class="fa fa-lock"></i>
+                        <input type="password" name="password" id="password" placeholder="Парола"
+                            formControlName="password"
+                            [class.input-error]="passwordsGroup.invalid && passwordsGroup.touched">
+                    </div>
+
+                    @if (passwordsGroup.get('password')?.touched && passwordsGroup.get('password')?.errors) {
+                    <span class="error">Минимум 5 символа</span>
+                    }
                 </div>
 
                 <div class="form-group">
                     <div class="input-wrapper">
-                        <i class="fa fa-cake-candles"></i>
-                        <input 
-                        type="number" 
-                        name="age"
-                        id="age"
-                        placeholder="Години" 
-                        formControlName="age">
-                    </div>
-                </div>
-
-                <ng-container formGroupName="passwords">
-                    <div class="form-group">
-                        <div class="input-wrapper">
-                            <i class="fa fa-lock"></i>
-                            <input 
-                            type="password" 
-                            name="password" 
-                            id="password" 
-                            placeholder="Парола" 
-                            formControlName="password"
-                            [class.input-error]="passwordsGroup.invalid && passwordsGroup.touched">
-                        </div>
-                        
-                        @if (passwordsGroup.get('password')?.touched && passwordsGroup.get('password')?.errors) {
-                            <span class="error">Минимум 5 символа</span>
-                        }
-                    </div>
-
-                    <div class="form-group">
-                        <div class="input-wrapper">
-                            <i class="fa fa-lock"></i>
-                            <input 
-                            type="password"
-                            name="rePassword" 
-                            id="rePassword"  
-                            placeholder="Повтори парола" 
+                        <i class="fa fa-lock"></i>
+                        <input type="password" name="rePassword" id="rePassword" placeholder="Повтори парола"
                             formControlName="rePassword"
                             [class.input-error]="passwordsGroup.invalid && passwordsGroup.touched">
-                        </div>
-                        
-                        @if (passwordsGroup.errors?.['passwordsMismatch']) {
-                            <span class="error">Паролите не съвпадат</span>
-                        }
                     </div>
-                    
-                </ng-container>
 
-                <button  class="btn" type="submit" [disabled]="registerForm.invalid || isLoading">
-                    @if(!isLoading) {
-                        <span>Регистрация</span>
-                    } @else {
-                        <span class="spinner"></span>
+                    @if (passwordsGroup.errors?.['passwordsMismatch']) {
+                    <span class="error">Паролите не съвпадат</span>
                     }
-                </button>
+                </div>
+
+            </ng-container>
+
+            <button class="btn" type="submit" [disabled]="registerForm.invalid || isLoading">
+                @if(!isLoading) {
+                <span>Регистрация</span>
+                } @else {
+                <span class="spinner"></span>
+                }
+            </button>
         </form>
 
 

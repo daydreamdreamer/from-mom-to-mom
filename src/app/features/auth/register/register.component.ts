@@ -5,11 +5,12 @@ import { AuthService } from '../../../core/services/auth.service';
 import { emailValidator } from '../../../shared/validators/email.validator';
 import { passwordsMatchValidator } from '../../../shared/validators/passwords-match.validator';
 import { InputErrorDirective } from '../../../shared/directives/input-error.directive';
+import { CitySelectComponent } from '../../../shared/components/city-select/city-select.component';
 
 
 @Component({
   selector: 'app-register',
-  imports: [ReactiveFormsModule, RouterLink, InputErrorDirective],
+  imports: [ReactiveFormsModule, RouterLink, InputErrorDirective, CitySelectComponent],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
@@ -18,10 +19,10 @@ export class RegisterComponent {
   private authService = inject(AuthService);
   private fb = inject(FormBuilder);
 
-  cities: string[] = [
+  /* cities: string[] = [
     'София', 'Пловдив', 'Варна', 'Бургас', 'Русе',
     'Стара Загора', 'Плевен', 'Сливен', 'Добрич', 'Враца', 'Видин'
-  ];
+  ]; */
 
   registerForm: FormGroup = this.fb.group({
     firstName: ["", [Validators.required, Validators.minLength(2)]],
@@ -45,9 +46,7 @@ export class RegisterComponent {
   }
 
   onRegister(): void {
-    console.log("22323");
     if (this.registerForm.invalid) {
-      console.log("dfsf");
       this.registerForm.markAllAsTouched();
       return;
     }
@@ -66,7 +65,7 @@ export class RegisterComponent {
       password: passwords.password
     }
 
-    /* this.authService.register(userData).subscribe({
+    this.authService.register(userData).subscribe({
       next: (user) => {
         this.authService.setSession(user);
         this.isLoading = false;
@@ -76,7 +75,7 @@ export class RegisterComponent {
         this.isLoading = false;
         this.errorMessage = err.error?.message || 'Неусепешна регистрация. Опитай отново';
       }
-    }) */
+    })
 
   }
 }

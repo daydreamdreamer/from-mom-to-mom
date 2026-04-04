@@ -1,0 +1,36 @@
+<div class="profile-wrapper">
+    @if(user){
+    <div class="profile-header">
+        <div class="avatar">
+            <img [src]="user.profilePic || '/images/profile-pic.png'">
+        </div>
+        <h2>{{ user.firstName }} {{ user.lastName }}</h2>
+        <div class="favorites-wrapper">
+            <app-favorites [user]="user"></app-favorites>
+        </div>
+    </div>
+
+    <div class="profile-field">
+        <i class="fa fa-envelope"></i>
+        <span>{{ user.email }}</span>
+    </div>
+
+    @if(user.age){
+    <div class="profile-field">
+        <i class="fa fa-cake-candles"></i>
+        <span>{{ user.age }} години</span>
+    </div>
+    }
+
+    @if(user.cityId){
+    <div class="profile-field">
+        <i class="fa fa-map-marker"></i>
+        <span>{{ user.cityId | cityName }}</span>
+    </div>
+    }
+
+    <button class="primary-btn" (click)="edit.emit()">
+        Редактирай профил
+    </button>
+    }
+</div>

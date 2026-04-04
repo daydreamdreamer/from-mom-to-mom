@@ -3,10 +3,7 @@
     <div class="city">{{ user.cityId | cityName }}</div>
     <div class="avatar-wrapper">
         <img [src]="user.profilePic" alt="user" class="avatar" />
-
-        <div class="favorites">
-            <i class="fa-solid fa-heart"></i>
-            <span>{{ user.favorites }}</span>
-        </div>
+        <app-favorites [user]="user">
+        </app-favorites>
     </div>
 </div>
