@@ -12,6 +12,7 @@ import { CITIES } from '../../data/cities.data';
 export class CitySelectComponent {
   @Input() form!: FormGroup;
   @Input() controlName!: string;
+  @Input() wrapperClass: string = '';
 
   cities = CITIES;
 }

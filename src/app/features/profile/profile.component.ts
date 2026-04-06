@@ -22,7 +22,6 @@ export class ProfileComponent {
   }
 
   onSave(updatedUser: UserProfileUpdate) {
-    //this.user = { ...this.user, ...updatedUser };
     this.isEditMode.set(false);
 
     this.authService.updateProfile(updatedUser).subscribe({

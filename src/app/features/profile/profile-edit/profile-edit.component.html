@@ -10,28 +10,50 @@
     <div class="row">
       <div class="profile-field">
         <i class="fa fa-user"></i>
-        <input formControlName="firstName" placeholder="Име">
+        <input type="text" name="firstName" id="firstName" formControlName="firstName" placeholder="Име">
+        @if (profileForm.get('firstName')?.touched && profileForm.get('firstName')?.invalid){
+        @if(profileForm.get("firstName")?.errors?.["required"]){
+        <p class="error">
+          Името е задължително.
+        </p>
+        }
+        @if(profileForm.get("firstName")?.errors?.["minlength"]){
+        <p class="error">
+          Името трябва да съдържа поне 2 знака!
+        </p>
+        }
+        }
       </div>
 
       <div class="profile-field">
         <i class="fa fa-user"></i>
         <input formControlName="lastName" placeholder="Фамилия">
+        @if (profileForm.get('lastName')?.touched && profileForm.get('lastName')?.invalid){
+        @if(profileForm.get("lastName")?.errors?.["required"]){
+        <p class="error">
+          Фамилията е задължителна.
+        </p>
+        }
+        @if(profileForm.get("lastName")?.errors?.["minlength"]){
+        <p class="error">
+          Фамилията трябва да съдържа поне 2 знака!
+        </p>
+        }
+        }
       </div>
     </div>
 
     <div class="profile-field">
       <i class="fa fa-envelope"></i>
-      <input formControlName="email" placeholder="Имейл" readonly>
+      <input id="email" type="text" placeholder="Имейл" name="email" formControlName="email" readonly>
     </div>
 
-    <div class="profile-field">
-      <i class="fa fa-map-marker"></i>
-      <input formControlName="city" placeholder="Град">
-    </div>
+    <app-city-select wrapperClass="profile-field" [form]="profileForm" controlName="city"></app-city-select>
+
 
     <div class="profile-field">
       <i class="fa fa-cake-candles"></i>
-      <input formControlName="age" placeholder="Години">
+      <input type="number" name="age" id="age" placeholder="Години" formControlName="age">
     </div>
 
     <div class="actions">
