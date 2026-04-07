@@ -1,0 +1,94 @@
+<div class="recipe container">
+    <div class="card">
+        <div class="header">
+            <img src="/images/logo-text.png" class="logo" alt="logo">
+            <h2>Добави нова рецепта</h2>
+            <p>Вдъхнови някого</p>
+        </div>
+        <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <input type="text" placeholder="Име на рецептата" formControlName="recipeName" appInputError>
+                @if(recipeForm.get('recipeName')?.touched && recipeForm.get('recipeName')?.invalid){
+                <p class="error">
+                    Името е задължително и трябва да има поне 2 знака.
+                </p>
+                }
+
+            </div>
+
+            <div class="form-group">
+                <select formControlName="category">
+                    <option [ngValue]="null" disabled selected>Избери категория</option>
+                    @for (cat of categoryEntries; track cat) {
+                    <option [value]="cat">
+                        {{ labels[cat] }}
+                    </option>
+                    }
+                </select>
+                @if (recipeForm.get('category')?.touched && recipeForm.get('category')?.invalid) {
+                <p class="error">Категорията е задължителна</p>
+                }
+            </div>
+
+            <ng-container formGroupName="cookingTime">
+                <div class="form-row time-row">
+                    <div class="time-icon">
+                        <i class="fa-regular fa-clock"></i>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-wrapper">
+                            <input id="hours" name="hours" type="number" formControlName="hours" min="0" max="23"
+                                placeholder="Час" />
+                        </div>
+                        @if (recipeForm.get('hours')?.touched && recipeForm.get('hours')?.invalid){
+                        @if(recipeForm.get("hours")?.errors?.["required"]){
+                        <p class="error">
+                            Часът е задължителен.
+                        </p>
+                        }
+                        @if(recipeForm.get('hours')?.errors?.['min'] || recipeForm.get('hours')?.errors?.['max']){
+                        <p class="error">
+                            Часът трябва да е между 0 и 23.
+                        </p>
+                        }
+                        }
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="input-wrapper">
+                            <input id="minutes" name="minutes" type="number" formControlName="minutes" min="0" max="59"
+                                placeholder="Минути" />
+                        </div>
+
+                        @if (recipeForm.get('minutes')?.touched && recipeForm.get('minutes')?.invalid){
+                        @if(recipeForm.get("minutes")?.errors?.["required"]){
+                        <p class="error">
+                            Минутите са задължителни.
+                        </p>
+                        }
+                        @if(recipeForm.get('minutes')?.errors?.['min'] || recipeForm.get('minutes')?.errors?.['max']){
+                        <p class="error">
+                            Минутите трябва да са между 0 и 59.
+                        </p>
+                        }
+                        }
+                    </div>
+                </div>
+            </ng-container>
+
+            <app-dynamic-list-input formControlName="ingredients" label="Съставки">
+            </app-dynamic-list-input>
+
+            <app-dynamic-list-input formControlName="preparationDetails" label="Начин на приготвяне">
+            </app-dynamic-list-input>
+
+
+            <div class="actions">
+                <button type="submit" class="btn">Запази рецепта</button>
+            </div>
+
+        </form>
+    </div>
+
+</div>

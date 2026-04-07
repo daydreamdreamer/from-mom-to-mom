@@ -1,8 +1,36 @@
 <div class="recipes container">
-    <h2 class="recipes-title">Рецепти</h2>
-    <div class="recipes-grid">
-        @for (recipe of recipes; track recipe._id) {
-            <app-recipe-item [recipe]="recipe"></app-recipe-item>
-        }
-    </div>
+  <h2 class="recipes-title">Рецепти</h2>
+
+  <div class="tabs-actions">
+    <nav class="tabs-recipes">
+      <ul>
+        <li>
+          <a routerLink="/recipes" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            Всички
+          </a>
+        </li>
+        <li>
+          <a routerLink="/recipes/mine" routerLinkActive="active">
+            Моите
+          </a>
+        </li>
+        <li>
+          <a routerLink="/recipes/favorites" routerLinkActive="active">
+            Любими
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <button class="add-btn" routerLink="/add-recipe">
+      <i class="fa-solid fa-plus"></i> Добави рецепта
+    </button>
+  </div>
+
+
+  <div class="recipes-grid">
+    @for (recipe of recipes; track recipe._id) {
+    <app-recipe-item [recipe]="recipe"></app-recipe-item>
+    }
+  </div>
 </div>

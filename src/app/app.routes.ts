@@ -9,22 +9,31 @@ import { RecipeContentComponent } from './features/recipes/recipe-content/recipe
 import { ForUsComponent } from './features/for-us/for-us.component';
 import { GeneralTermsComponent } from './features/general-terms/general-terms.component';
 import { ProfileComponent } from './features/profile/profile.component';
+import { AddRecipeComponent } from './features/recipes/add-recipe/add-recipe.component';
 
 export const routes: Routes = [
-    { path: '', redirectTo: 'home', pathMatch: 'full' }, 
+    { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
 
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
 
-    { path: 'recipes', component: RecipesComponent },
-    { path: 'recipes/:recipeId', component: RecipeContentComponent},
+    {
+        path: 'recipes',
+        children: [
+            { path: '', component: RecipesComponent },
+            { path: 'mine', component: RecipesComponent },
+            { path: 'favorites', component: RecipesComponent }
+        ]
+    },
+    { path: 'recipes/:recipeId', component: RecipeContentComponent },
+    { path: 'add-recipe', component: AddRecipeComponent },
 
     { path: 'forus', component: ForUsComponent },
-    { path: 'terms', component: GeneralTermsComponent},
+    { path: 'terms', component: GeneralTermsComponent },
 
     { path: "profile", component: ProfileComponent }, //, canActivate: [authGuard]
 
-    {path: '**', component: NotFoundComponent}
+    { path: '**', component: NotFoundComponent }
 ];
 

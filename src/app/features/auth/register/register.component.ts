@@ -19,11 +19,6 @@ export class RegisterComponent {
   private authService = inject(AuthService);
   private fb = inject(FormBuilder);
 
-  /* cities: string[] = [
-    'София', 'Пловдив', 'Варна', 'Бургас', 'Русе',
-    'Стара Загора', 'Плевен', 'Сливен', 'Добрич', 'Враца', 'Видин'
-  ]; */
-
   registerForm: FormGroup = this.fb.group({
     firstName: ["", [Validators.required, Validators.minLength(2)]],
     lastName: ["", [Validators.required, Validators.minLength(2)]],

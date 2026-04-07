@@ -1,0 +1,20 @@
+<div class="dynamic-wrapper">
+  <label class="label">{{ label }}</label>
+
+  <div class="list">
+    @for (control of formArray.controls; track $index; let i = $index) {
+      <div class="row">
+        <input type="text" [formControl]="control" placeholder="Въведи..." (input)="emitChanges()" />
+
+        @if (i === 0) {
+          <button type="button" class="add-btn" (click)="addField()">+</button>
+        } @else {
+          <button type="button" class="remove-btn" (click)="removeField(i)">×</button>
+        }
+      </div>
+      @if (control.touched && control.invalid) {
+        <p class="error">Полето е задължително</p>
+      }
+    }
+  </div>
+</div>
