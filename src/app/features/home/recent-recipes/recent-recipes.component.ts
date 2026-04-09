@@ -1,6 +1,7 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { Recipe, RecipeCategory } from '../../../shared/interfaces/recipe';
 import { RecentRecipesItemComponent } from '../../../shared/components/recent-recipes-item/recent-recipes-item.component';
+import { RecipesService } from '../../../core/services/recipes.service';
 
 @Component({
   selector: 'app-recent-recipes',
@@ -10,28 +11,15 @@ import { RecentRecipesItemComponent } from '../../../shared/components/recent-re
 })
 
 export class RecentRecipesComponent implements OnInit {
+  recipeService = inject(RecipesService);
+
   latestRecipes: Recipe[] = [];
 
   ngOnInit(): void {
-    //dummy data
-    this.latestRecipes = [
-      {
-        _id: "123",
-        image: '/images/food1.jpeg',
-        recipeName: 'Кренвиршки',
-        category: RecipeCategory.BreakfastAndBrunch,
-        cookingTime: '1ч 20мин',
-        created_at: '13 август 2025'
-      },
-      {
-        _id: "325",
-        image: '/images/food2.jpeg',
-        recipeName: 'Oрзо със зеленяши',
-        category: RecipeCategory.BreakfastAndBrunch,
-        cookingTime: '50мин',
-        created_at: '3 февруари 2026'
-      }
-    ];
+    this.recipeService.getLatestRecipes().subscribe((recipes) => {
+      this.latestRecipes = recipes;
+    })
+    
   }
 
   currentIndex = signal(0);
