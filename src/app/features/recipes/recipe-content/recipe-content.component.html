@@ -1,18 +1,23 @@
-<section class="recipe-detail container">
+<div class="recipe-detail container">
     @if(recipe){
     <div class="image-wrapper">
-        <img [src]="recipe.image" alt="recipe" />
+        <img [src]="recipe.category | categoryImage" alt="recipe" />
     </div>
     <h1 class="recipe-name">{{ recipe.recipeName }}
         <span class="cooking-time">
             <i class="fa-regular fa-clock"></i>
-            {{ recipe.cookingTime }}
+            {{ recipe.cookingTime | cookingTime}}
         </span>
+        @if(isOwner()){
+        <button class="edit-btn" routerLink="/edit-recipe">
+            <i class="fa-regular fa-pen-to-square"></i> Редактирай рецепта
+        </button>
+        }
     </h1>
 
     <div class="meta">
-        <span class="author">Мария Апостолова</span>
-        <span class="date">{{ recipe.created_at }}</span>
+        <span class="author">{{ recipe.author?.firstName}} {{recipe.author?.lastName }}</span>
+        <span class="date">{{ recipe.created_at | date:'dd MMMM yyyy':'':'bg'}}</span>
         <div class="favorites">
             <i class="fa-solid fa-heart"></i>
             <span>{{ recipe.favorites }}</span>
@@ -21,7 +26,7 @@
 
     <p class="category">
         <i class="fa-solid fa-arrow-right-long"></i>
-        {{ recipe.category }}
+        {{ labels[recipe.category] }}
     </p>
 
     <div class="section">
@@ -45,4 +50,4 @@
         </ol>
     </div>
     }
-</section>
+</div>

@@ -6,6 +6,7 @@
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
     transition: 0.3s;
     cursor: pointer;
+    position: relative;
 }
 
 .recipe-card:hover {
@@ -16,18 +17,61 @@
     width: 100%;
     height: 200px;
     overflow: hidden;
+    position: relative;
 }
 
 .image-wrapper img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-
     transition: 0.4s;
 }
 
 .recipe-card:hover img {
     transform: scale(1.05);
+}
+
+.edit-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    background: #fff;
+    color: var(--primary);
+
+    border: 2px solid var(--primary);
+    border-radius: 50%;
+
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+
+    z-index: 2;
+}
+
+.edit-btn:hover {
+    background: var(--primary);
+    color: #fff;
+
+    transform: translateY(-2px) scale(1.05);
+}
+
+.recipe-card .edit-btn {
+    opacity: 0;
+    transform: translateY(-5px);
+}
+
+.recipe-card:hover .edit-btn {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .card-content {

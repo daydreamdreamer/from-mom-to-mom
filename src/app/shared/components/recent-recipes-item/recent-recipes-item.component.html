@@ -1,5 +1,5 @@
 <a class="slide" [class.active]="active" [routerLink]="['/recipes', recipe._id]">
-    <img [src]="[ recipe.category | categoryImage]" />
+    <img [src]="recipe.category | categoryImage" />
     <div class="content">
         <p>{{ labels[recipe.category] }}</p>
         <h1>{{ recipe.recipeName }}</h1>

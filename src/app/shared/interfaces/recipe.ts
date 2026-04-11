@@ -1,23 +1,23 @@
+import { User } from "./user";
+
 export interface Recipe {
   _id: string;
   recipeName: string;
-  cookingTime?: string;
-  ingredients?: string[];
-  preparationDetails?: string[];
-  category: RecipeCategory; 
-  image: string;
-  favorites?: number;
-  created_at?: string;
-  userId?: string; // ID на потребителя, който е създал рецептата
-}
-
-export interface RecipeCreate {
-  recipeName: string;
-  cookingTime: string;
+  category: RecipeCategory;
+  cookingTime: number;
   ingredients: string[];
   preparationDetails: string[];
-  category: RecipeCategory; 
-  image?: string;
+  favorites?: number;
+  created_at: string;
+  author?: User
+}
+
+export interface RecipeCreateData {
+  recipeName: string;
+  category: RecipeCategory;
+  cookingTime: number;
+  ingredients: string[];
+  preparationDetails: string[];
 }
 
 export enum RecipeCategory {

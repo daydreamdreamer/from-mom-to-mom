@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { StatsService } from '../../../core/services/stats.service';
 
 @Component({
   selector: 'app-recipes-count',
@@ -7,8 +8,12 @@ import { Component } from '@angular/core';
   styleUrl: './recipes-count.component.css'
 })
 export class RecipesCountComponent {
+  private statsService = inject(StatsService);
 
-  recipesCount = 52618;
-  authorsCount = 246;
+  recipesCount = this.statsService.recipesCount;
+  usersCount = this.statsService.usersCount;
 
+  ngOnInit() {
+    this.statsService.sync();
+  }
 }

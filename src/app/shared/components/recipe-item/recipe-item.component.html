@@ -1,19 +1,25 @@
 <div class="recipe-card" [routerLink]="['/recipes', recipe._id]">
     <div class="image-wrapper">
-        <img [src]="recipe.image" alt="recipe" />
+        <img [src]="recipe.category | categoryImage" alt="recipe" />
+        @if(isOwner()){
+        <button class="edit-btn" routerLink="/edit-recipe" (click)="$event.stopPropagation()">
+            <i class="fa-regular fa-pen-to-square"></i>
+        </button>
+        }
     </div>
     <div class="card-content">
         <h3 class="recipe-name">{{ recipe.recipeName }}</h3>
         <p class="cooking-time">
             <i class="fa-regular fa-clock"></i>
-            {{ recipe.cookingTime }}
+            {{ recipe.cookingTime | cookingTime}}
         </p>
         <div class="meta">
             <span class="category">
-                {{ recipe.category }}
+                {{ labels[recipe.category] }}
             </span>
             <div class="favorites">
                 <i class="fa-solid fa-heart"></i>
+                <i class="fa-light fa-heart"></i>
                 <span>{{ recipe.favorites }}</span>
             </div>
         </div>

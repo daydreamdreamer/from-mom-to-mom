@@ -42,4 +42,9 @@ export class AuthService {
   clearSession(): void {
     this.user.set(null);
   }
+
+  isOwner(userId: string | null | undefined): boolean {
+    const user = this.user();
+    return !!user && !!userId && user._id === userId;
+  }
 }

@@ -15,16 +15,16 @@
                             formControlName="firstName">
                     </div>
                     @if (registerForm.get('firstName')?.touched && registerForm.get('firstName')?.invalid){
-                    @if(registerForm.get("firstName")?.errors?.["required"]){
-                    <p class="error">
-                        Името е задължително.
-                    </p>
-                    }
-                    @if(registerForm.get("firstName")?.errors?.["minlength"]){
-                    <p class="error">
-                        Името трябва да съдържа поне 2 знака!
-                    </p>
-                    }
+                        @if(registerForm.get("firstName")?.errors?.["required"]){
+                            <p class="error">
+                                Името е задължително.
+                            </p>
+                        }
+                        @if(registerForm.get("firstName")?.errors?.["minlength"]){
+                            <p class="error">
+                                Името трябва да съдържа поне 2 знака!
+                            </p>
+                        }
                     }
                 </div>
 
@@ -36,16 +36,16 @@
                     </div>
 
                     @if (registerForm.get('lastName')?.touched && registerForm.get('lastName')?.invalid){
-                    @if(registerForm.get("lastName")?.errors?.["required"]){
-                    <p class="error">
-                        Фамилията е задължителна.
-                    </p>
-                    }
-                    @if(registerForm.get("lastName")?.errors?.["minlength"]){
-                    <p class="error">
-                        Фамилията трябва да съдържа поне 2 знака!
-                    </p>
-                    }
+                        @if(registerForm.get("lastName")?.errors?.["required"]){
+                            <p class="error">
+                                Фамилията е задължителна.
+                            </p>
+                        }
+                        @if(registerForm.get("lastName")?.errors?.["minlength"]){
+                            <p class="error">
+                                Фамилията трябва да съдържа поне 2 знака!
+                            </p>
+                        }
                     }
                 </div>
             </div>

@@ -1,45 +1,42 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, computed, inject, OnInit } from '@angular/core';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Recipe } from '../../../shared/interfaces/recipe';
+import { CookingTimePipe } from '../../../shared/pipes/cooking-time.pipe';
+import { RecipeCategoryLabels } from '../../../shared/constants/recipe-category.map';
+import { CategoryImagePipe } from '../../../shared/pipes/category-image.pipe';
+import { RecipesService } from '../../../core/services/recipes.service';
+import { DatePipe } from '@angular/common';
+import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-recipe-content',
-  imports: [],
+  imports: [RouterLink, CookingTimePipe, CategoryImagePipe, DatePipe],
   templateUrl: './recipe-content.component.html',
   styleUrl: './recipe-content.component.css'
 })
 export class RecipeContentComponent implements OnInit {
   private route = inject(ActivatedRoute);
+  recipeService = inject(RecipesService);
+  authService = inject(AuthService);
 
   recipe: Recipe | null = null;
   recipeId = '';
+  
+  labels = RecipeCategoryLabels;
+  isOwner = computed(() =>
+    this.authService.isOwner(this.recipe?.author?._id)
+  );
 
   ngOnInit(): void {
-    this.recipeId = this.route.snapshot.params['recipeId'];
+    this.route.paramMap.subscribe(params => {
+      const id = params.get('recipeId');
 
-    this.recipe =
-     {
-        _id: "22",
-        recipeName: 'Крекери с маслини и кимион',
-        category: "Снакове",
-        image: '/images/food2.jpeg',
-        cookingTime: "1ч",
-        //author: 'Мария',
-        created_at: '12 март 2026',
-        favorites: 34,
-        ingredients: [
-          '2 чаши брашно',
-          '1/2 чаша зехтин',
-          'маслини',
-          'кимион',
-          'сол'
-        ],
-        preparationDetails: [
-          'Смесете всички съставки.',
-          'Омесете тесто.',
-          'Разточете тънко.',
-          'Печете 20 минути на 180°C.'
-        ]
-      };
+      if (id) {
+        this.recipeService.getRecipe(id).subscribe(recipe => {
+          console.log(this.recipe);
+          this.recipe = recipe;
+        });
+      }
+    });
   }
 }
