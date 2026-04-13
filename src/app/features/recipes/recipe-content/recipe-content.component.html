@@ -9,9 +9,14 @@
             {{ recipe.cookingTime | cookingTime}}
         </span>
         @if(isOwner()){
-        <button class="edit-btn" [routerLink]="['/recipes', recipe._id, 'edit']" (click)="$event.stopPropagation()">
-            <i class="fa-regular fa-pen-to-square"></i> Редактирай рецепта
-        </button>
+        <div class="actions">
+            <button class="edit-btn" [routerLink]="['/recipes', recipe._id, 'edit']" (click)="$event.stopPropagation()">
+                <i class="fa-regular fa-pen-to-square"></i> Редактирай рецепта
+            </button>
+            <button class="delete-btn" (click)="onDelete($event)">
+                <i class="fa-solid fa-trash"></i> Изтрий
+            </button>
+        </div>
         }
     </h1>
 

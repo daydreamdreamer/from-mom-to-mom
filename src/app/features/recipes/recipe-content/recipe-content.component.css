@@ -39,7 +39,7 @@
 }
 
 
-.edit-btn {
+.edit-btn, .delete-btn {
     margin-left: auto;
     background: #fff;
     color: var(--primary);
@@ -56,7 +56,7 @@
     white-space: nowrap;
 }
 
-.edit-btn:hover {
+.edit-btn:hover, .delete-btn:hover {
     background: var(--primary);
     color: #fff;
     transform: translateY(-1px);

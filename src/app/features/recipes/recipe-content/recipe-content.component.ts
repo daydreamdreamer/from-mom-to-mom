@@ -1,5 +1,5 @@
 import { Component, computed, inject, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Recipe } from '../../../shared/interfaces/recipe';
 import { CookingTimePipe } from '../../../shared/pipes/cooking-time.pipe';
 import { RecipeCategoryLabels } from '../../../shared/constants/recipe-category.map';
@@ -16,12 +16,13 @@ import { AuthService } from '../../../core/services/auth.service';
 })
 export class RecipeContentComponent implements OnInit {
   private route = inject(ActivatedRoute);
+  private router = inject(Router);
   recipeService = inject(RecipesService);
   authService = inject(AuthService);
 
   recipe: Recipe | null = null;
   recipeId = '';
-  
+
   labels = RecipeCategoryLabels;
   isOwner = computed(() =>
     this.authService.isOwner(this.recipe?.author?._id)
@@ -35,6 +36,25 @@ export class RecipeContentComponent implements OnInit {
         this.recipeService.getRecipe(id).subscribe(recipe => {
           this.recipe = recipe;
         });
+      }
+    });
+  }
+
+  onDelete(event: Event) {
+    event.stopPropagation();
+
+    if (!this.recipe) return;
+
+    const confirmed = confirm('Сигурен ли си, че искаш да изтриеш рецептата?');
+
+    if (!confirmed) return;
+
+    this.recipeService.deleteRecipe(this.recipe._id).subscribe({
+      next: () => {
+        this.router.navigate(['/recipes']);
+      },
+      error: (err) => {
+        console.error(err);
       }
     });
   }

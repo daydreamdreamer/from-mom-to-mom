@@ -1,5 +1,4 @@
-import { Component, computed, inject, Input } from '@angular/core';
-import { RecipesService } from '../../../core/services/recipes.service';
+import { Component, computed, EventEmitter, inject, Input, Output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Recipe } from '../../interfaces/recipe';
 import { CookingTimePipe } from '../../pipes/cooking-time.pipe';
@@ -15,11 +14,22 @@ import { AuthService } from '../../../core/services/auth.service';
 })
 export class RecipeItemComponent {
   @Input({ required: true }) recipe!: Recipe;
-  authService = inject(AuthService);
+  @Output() deleteRecipe = new EventEmitter<string>();
 
+  authService = inject(AuthService);
   labels = RecipeCategoryLabels;
 
   isOwner = computed(() =>
     this.authService.isOwner(this.recipe?.author?._id)
   );
+
+  onDelete(event: Event) {
+    event.stopPropagation();
+
+    const confirmed = confirm('Сигурен ли си?');
+
+    if (!confirmed) return;
+
+    this.deleteRecipe.emit(this.recipe._id);
+  }
 }

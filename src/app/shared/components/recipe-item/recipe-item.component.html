@@ -2,9 +2,14 @@
     <div class="image-wrapper">
         <img [src]="recipe.category | categoryImage" alt="recipe" />
         @if(isOwner()){
-        <button class="edit-btn" [routerLink]="['/recipes', recipe._id, 'edit']" (click)="$event.stopPropagation()">
-            <i class="fa-regular fa-pen-to-square"></i>
-        </button>
+        <div class="actions">
+            <button class="edit-btn" [routerLink]="['/recipes', recipe._id, 'edit']" (click)="$event.stopPropagation()">
+                <i class="fa-regular fa-pen-to-square"></i>
+            </button>
+            <button class="delete-btn" (click)="onDelete($event)">
+                <i class="fa-solid fa-trash"></i>
+            </button>
+        </div>
         }
     </div>
     <div class="card-content">

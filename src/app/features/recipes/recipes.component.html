@@ -31,7 +31,7 @@
 
   <div class="recipes-grid">
     @for (recipe of recipes; track recipe._id) {
-    <app-recipe-item [recipe]="recipe"></app-recipe-item>
+    <app-recipe-item [recipe]="recipe" (deleteRecipe)="onDelete($event)"></app-recipe-item>
     }
   </div>
 </div>
