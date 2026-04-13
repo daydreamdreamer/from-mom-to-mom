@@ -31,8 +31,8 @@ export class RecipeFormComponent implements OnChanges {
     category: [null as RecipeCategory | null, Validators.required],
     cookingTime: this.fb.group(
       {
-        hours: [0, [Validators.required, Validators.min(0), Validators.max(23)]],
-        minutes: [0, [Validators.required, Validators.min(0), Validators.max(59)]]
+        hours: [null, [Validators.required, Validators.min(0), Validators.max(23)]],
+        minutes: [null, [Validators.required, Validators.min(0), Validators.max(59)]]
       },
       { validators: timeValidator }
     ),

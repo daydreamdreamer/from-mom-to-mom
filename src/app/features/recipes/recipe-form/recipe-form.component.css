@@ -69,7 +69,8 @@ select:focus {
 
 .inputs {
   display: flex;
-  gap: 10px;
+  align-items: center;
+  gap: 8px;
 }
 
 .inputs input {
@@ -100,10 +101,19 @@ select:focus {
   font-size: 18px;
 }
 
-/* ========================= */
+.separator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 44px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #666;
+}
 
 .error {
-  color: red;
+  color: #f17a56;
   font-size: 12px;
 }
 

@@ -50,12 +50,17 @@
         <div class="time-fields">
 
           <div class="inputs">
-            <input appInputError type="number" formControlName="hours" min="0" max="23" placeholder="Час" />
-            <input appInputError type="number" formControlName="minutes" min="0" max="59" placeholder="Минути" />
+            <input id="hours" name="hours" appInputError type="number" formControlName="hours" min="0" max="23"
+              placeholder="Час" />
+            <span class="separator">:</span>
+            <input id="minutes" name="minutes" appInputError type="number" formControlName="minutes" min="0" max="59"
+              placeholder="Минути" />
           </div>
 
           <div class="errors">
-
+            @if (recipeForm.get('cookingTime')?.errors?.['invalidTime']) {
+            <p class="error">Времето не може да бъде 0 минути</p>
+            }
             <div class="error-block">
               @if (hoursCtrl?.touched && hoursCtrl?.invalid) {
 

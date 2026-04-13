@@ -155,9 +155,10 @@ img {
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-input.input-error {
-  border-color: rgb(255, 80, 80) !important;
-  background-color: #fff5f5 !important;
+input.input-error, select.input-error {
+  border-color: rgb(255, 121, 80) !important;
+  background-color: #f8e1d2 !important;
+  box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.1);
 }
 
 
