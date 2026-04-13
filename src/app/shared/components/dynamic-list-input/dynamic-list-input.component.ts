@@ -1,23 +1,11 @@
-import {
-  Component,
-  Input,
-  forwardRef,
-  inject
-} from '@angular/core';
-import {
-  ControlValueAccessor,
-  NG_VALUE_ACCESSOR,
-  FormArray,
-  FormBuilder,
-  FormControl,
-  ReactiveFormsModule,
-  Validators
-} from '@angular/forms';
+import { Component, Input, forwardRef, inject} from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormArray, FormBuilder, FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
+import { InputErrorDirective } from "../../../shared/directives/input-error.directive";
 
 @Component({
   selector: 'app-dynamic-list-input',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, InputErrorDirective],
   templateUrl: './dynamic-list-input.component.html',
   styleUrls: ['./dynamic-list-input.component.css'],
   providers: [

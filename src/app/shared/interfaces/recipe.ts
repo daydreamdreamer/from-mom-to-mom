@@ -12,7 +12,8 @@ export interface Recipe {
   author?: User
 }
 
-export interface RecipeCreateData {
+//Recipe Data transfer object
+export interface RecipeDto {
   recipeName: string;
   category: RecipeCategory;
   cookingTime: number;

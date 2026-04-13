@@ -18,7 +18,6 @@ export interface UserWithCredentials extends User{
 export interface UserForAuth{
     firstName: string,
     lastName: string,
-    //username: string
     email: string,
     password: string,
     age?: number,
@@ -33,7 +32,6 @@ export interface LoginCredentials {
 export interface UserProfileUpdate {
     firstName: string,
     lastName: string,
-    //username: string,
     age?: number,
     cityId?: number
 }

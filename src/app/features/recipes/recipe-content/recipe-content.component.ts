@@ -33,7 +33,6 @@ export class RecipeContentComponent implements OnInit {
 
       if (id) {
         this.recipeService.getRecipe(id).subscribe(recipe => {
-          console.log(this.recipe);
           this.recipe = recipe;
         });
       }

@@ -9,7 +9,7 @@
             {{ recipe.cookingTime | cookingTime}}
         </span>
         @if(isOwner()){
-        <button class="edit-btn" routerLink="/edit-recipe">
+        <button class="edit-btn" [routerLink]="['/recipes', recipe._id, 'edit']" (click)="$event.stopPropagation()">
             <i class="fa-regular fa-pen-to-square"></i> Редактирай рецепта
         </button>
         }

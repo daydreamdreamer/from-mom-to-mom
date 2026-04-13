@@ -1,6 +1,7 @@
 <div class="recipes container">
   <h2 class="recipes-title">Рецепти</h2>
 
+  @if (authService.isLoggedIn()) {
   <div class="tabs-actions">
     <nav class="tabs-recipes">
       <ul>
@@ -22,11 +23,11 @@
       </ul>
     </nav>
 
-    <button class="add-btn" routerLink="/add-recipe">
+    <button class="add-btn" routerLink="/recipes/add">
       <i class="fa-solid fa-plus"></i> Добави рецепта
     </button>
   </div>
-
+  }
 
   <div class="recipes-grid">
     @for (recipe of recipes; track recipe._id) {
