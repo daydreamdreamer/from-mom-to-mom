@@ -1,7 +1,7 @@
 import { Injectable, signal, computed, inject } from '@angular/core';
 import { Stats } from '../../shared/interfaces/stats';
 import { HttpClient } from '@angular/common/http';
-import { tap } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -59,26 +59,32 @@ export class StatsService {
     }));
   }
 
-  onRecipeCreated(observable: any) {
+  onRecipeCreated<T>(observable: Observable<T>) {
     this.incrementRecipes();
 
     return observable.pipe(
       tap({
-        error: () => {
-          this.decrementRecipes(); // rollback
-        }
+        error: () => this.decrementRecipes()
       })
     );
   }
 
-  onUserRegistered(observable: any) {
+  onRecipeDeleted<T>(observable: Observable<T>) {
+    this.decrementRecipes();
+
+    return observable.pipe(
+      tap({
+        error: () => this.incrementRecipes() // rollback
+      })
+    );
+  }
+
+  onUserRegistered<T>(observable: Observable<T>) {
     this.incrementUsers();
 
     return observable.pipe(
       tap({
-        error: () => {
-          this.decrementUsers(); // rollback
-        }
+        error: () => this.decrementUsers()
       })
     );
   }

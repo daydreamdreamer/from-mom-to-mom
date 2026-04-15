@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { RecipeFormComponent } from '../recipe-form/recipe-form.component';
 import { RecipesService } from '../../../core/services/recipes.service';
 import { RecipeDto } from '../../../shared/interfaces/recipe';
+import { StatsService } from '../../../core/services/stats.service';
 
 @Component({
   selector: 'app-add-recipe',
@@ -12,13 +13,16 @@ import { RecipeDto } from '../../../shared/interfaces/recipe';
 })
 export class AddRecipeComponent {
   private recipeService = inject(RecipesService);
+  private statsService = inject(StatsService);
   private router = inject(Router);
 
   onCreate(data: RecipeDto) {
-    this.recipeService.createRecipe(data).subscribe({
-      next: (recipe) => {
-        this.router.navigate(['/recipes', recipe._id]);
-      }
-    });
+    this.statsService
+      .onRecipeCreated(this.recipeService.createRecipe(data))
+      .subscribe({
+        next: (recipe) => {
+          this.router.navigate(['/recipes', recipe._id]);
+        }
+      });
   }
 }

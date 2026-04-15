@@ -32,7 +32,7 @@ export class RecipeItemComponent {
 
   onDelete(event: Event) {
     event.stopPropagation();
-    const confirmed = confirm('Сигурен ли си?');
+    const confirmed = confirm('Сигурен ли си, че искаш да изтриеш рецептата?');
     if (!confirmed) return;
     this.deleteRecipe.emit(this.recipe._id);
   }

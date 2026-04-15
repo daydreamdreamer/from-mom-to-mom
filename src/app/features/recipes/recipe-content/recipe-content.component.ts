@@ -9,6 +9,7 @@ import { DatePipe } from '@angular/common';
 import { AuthService } from '../../../core/services/auth.service';
 import { FavoritesComponent } from '../../../shared/components/favorites/favorites.component';
 import { isRecipeFavorited, getFavoritesCount } from '../../../shared/utils/recipe.utils';
+import { StatsService } from '../../../core/services/stats.service';
 
 @Component({
   selector: 'app-recipe-content',
@@ -21,6 +22,7 @@ export class RecipeContentComponent implements OnInit {
   private router = inject(Router);
   recipeService = inject(RecipesService);
   authService = inject(AuthService);
+  statsService = inject(StatsService);
 
   getFavoritesCount = getFavoritesCount;
   isRecipeFavorited = isRecipeFavorited;
@@ -52,17 +54,16 @@ export class RecipeContentComponent implements OnInit {
     if (!this.recipe) return;
 
     const confirmed = confirm('Сигурен ли си, че искаш да изтриеш рецептата?');
-
     if (!confirmed) return;
 
-    this.recipeService.deleteRecipe(this.recipe._id).subscribe({
-      next: () => {
-        this.router.navigate(['/recipes']);
-      },
-      error: (err) => {
-        console.error(err);
-      }
-    });
+    this.statsService
+      .onRecipeDeleted(this.recipeService.deleteRecipe(this.recipe._id))
+      .subscribe({
+        next: () => {
+          this.router.navigate(['/recipes']);
+        },
+        error: (err) => console.error(err)
+      });
   }
 
   onToggleFavorite() {

@@ -6,6 +6,7 @@ import { emailValidator } from '../../../shared/validators/email.validator';
 import { passwordsMatchValidator } from '../../../shared/validators/passwords-match.validator';
 import { InputErrorDirective } from '../../../shared/directives/input-error.directive';
 import { CitySelectComponent } from '../../../shared/components/city-select/city-select.component';
+import { StatsService } from '../../../core/services/stats.service';
 
 
 @Component({
@@ -18,6 +19,7 @@ export class RegisterComponent {
   private router = inject(Router);
   private authService = inject(AuthService);
   private fb = inject(FormBuilder);
+  private statsService = inject(StatsService);
 
   registerForm: FormGroup = this.fb.group({
     firstName: ["", [Validators.required, Validators.minLength(2)]],
@@ -58,19 +60,20 @@ export class RegisterComponent {
       city,
       age,
       password: passwords.password
-    }
+    };
 
-    this.authService.register(userData).subscribe({
-      next: (user) => {
-        this.authService.setSession(user);
-        this.isLoading = false;
-        this.router.navigate(["/recipes"]);
-      },
-      error: (err) => {
-        this.isLoading = false;
-        this.errorMessage = err.error?.message || 'Неусепешна регистрация. Опитай отново';
-      }
-    })
-
+    this.statsService
+      .onUserRegistered(this.authService.register(userData))
+      .subscribe({
+        next: (user) => {
+          this.authService.setSession(user);
+          this.isLoading = false;
+          this.router.navigate(['/recipes']);
+        },
+        error: (err) => {
+          this.isLoading = false;
+          this.errorMessage = err.error?.message || 'Неусепешна регистрация. Опитай отново';
+        }
+      });
   }
 }

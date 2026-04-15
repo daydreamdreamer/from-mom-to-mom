@@ -3,6 +3,8 @@ import { Recipe } from '../../shared/interfaces/recipe';
 import { RecipeItemComponent } from '../../shared/components/recipe-item/recipe-item.component';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { RecipesService } from '../../core/services/recipes.service';
+import { AuthService } from '../../core/services/auth.service';
+import { StatsService } from '../../core/services/stats.service';
 
 @Component({
   selector: 'app-recipes',
@@ -16,6 +18,7 @@ export class RecipesComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   recipeService = inject(RecipesService);
+  statsService = inject(StatsService);
 
   recipes: Recipe[] = [];
 
@@ -53,15 +56,15 @@ export class RecipesComponent implements OnInit {
     });
   }
 
-  onDelete(id: string) {
-    this.recipeService.deleteRecipe(id).subscribe({
-      next: () => {
-        this.recipes = this.recipes.filter(r => r._id !== id);
-      },
-      error: (err) => {
-        console.error(err);
-      }
-    });
+  onDelete(recipeIdd: string) {
+    this.statsService
+      .onRecipeDeleted(this.recipeService.deleteRecipe(recipeIdd))
+      .subscribe({
+        next: () => {
+          this.recipes = this.recipes.filter(r => r._id !== recipeIdd);
+        },
+        error: (err) => console.error(err)
+      });
   }
 
   onFavoriteToggle(recipeId: string) {

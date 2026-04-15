@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Recipe, RecipeDto } from '../../shared/interfaces/recipe';
+import { TopUser } from '../../shared/interfaces/user';
 
 @Injectable({
   providedIn: 'root'
@@ -42,4 +43,15 @@ export class RecipesService {
   deleteRecipe(recipeId: string): Observable<Recipe> {
     return this.http.delete<Recipe>(`${this.apiUrl}/recipes/${recipeId}`, { withCredentials: true });
   }
+  getTopUsers(): Observable<TopUser[]> {
+    return this.http.get<TopUser[]>(`${this.apiUrl}/recipes/top-users`);
+  }
+
+  getMyTotalFavorites(): Observable<number> {
+  return this.http
+    .get<{ totalFavorites: number }>(`${this.apiUrl}/recipes/my-total-favorites`, {
+      withCredentials: true
+    })
+    .pipe(map(res => res.totalFavorites));
+}
 }
