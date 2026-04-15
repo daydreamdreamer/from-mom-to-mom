@@ -43,6 +43,11 @@ export class RecipesService {
   deleteRecipe(recipeId: string): Observable<Recipe> {
     return this.http.delete<Recipe>(`${this.apiUrl}/recipes/${recipeId}`, { withCredentials: true });
   }
+
+  toggleFavorite(recipeId: string): Observable<Recipe> {
+    return this.http.put<Recipe>(`${this.apiUrl}/recipes/${recipeId}/favorite`, {}, { withCredentials: true });
+  }
+
   getTopUsers(): Observable<TopUser[]> {
     return this.http.get<TopUser[]>(`${this.apiUrl}/recipes/top-users`);
   }

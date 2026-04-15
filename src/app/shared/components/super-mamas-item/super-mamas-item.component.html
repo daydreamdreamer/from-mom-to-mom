@@ -3,8 +3,8 @@
     <div class="city">{{ topUser.cityId | cityName }}</div>
     <div class="avatar-wrapper">
         <img [src]="topUser.profilePic || defaultAvatar" alt="user" class="avatar" />
-        <div class="favorites-badge"> <app-favorites [count]="topUser.totalFavorites" [isFavorited]="true" [disabled]="true"
-                class="favorites-badge"></app-favorites>
+        <div class="favorites-badge"> 
+            <app-favorites [count]="topUser.totalFavorites" [isFavorited]="true" [disabled]="true"></app-favorites>
         </div>
     </div>
 </div>

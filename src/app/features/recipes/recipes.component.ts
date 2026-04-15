@@ -18,21 +18,23 @@ export class RecipesComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   recipeService = inject(RecipesService);
+  authService = inject(AuthService);
   statsService = inject(StatsService);
+  
 
   recipes: Recipe[] = [];
 
   ngOnInit(): void {
-
-    this.route.url.subscribe(url => {
-      const path = url[0]?.path;
-
-      if (path === 'mine') {
-        this.loadMyRecipes();
-      } else if (path === 'favorites') {
-        this.loadFavorites();
-      } else {
-        this.loadAll();
+    this.route.data.subscribe(data => {
+      switch (data['type']) {
+        case 'mine':
+          this.loadMyRecipes();
+          break;
+        case 'favorites':
+          this.loadFavorites();
+          break;
+        default:
+          this.loadAll();
       }
     });
 
