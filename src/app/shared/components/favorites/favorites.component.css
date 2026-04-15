@@ -1,15 +1,67 @@
-.favorites {
-  position: absolute;
-  bottom: -5px;
-  right: -5px;
-  background: white;
-  border-radius: 20px;
-  padding: 3px 8px;
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--primary);
+.favorite {
   display: flex;
   align-items: center;
-  gap: 3px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  gap: 6px;
+  cursor: pointer;
+  user-select: none;
+  transition: 0.2s;
+  color: var(--primary);
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border-radius: 20px;
+  padding: 3px 8px;
+}
+
+.favorite i {
+  font-size: 13px;
+  transition: 0.2s;
+}
+
+.favorite:hover i {
+  transform: scale(1.1);
+}
+
+.favorite.disabled {
+  cursor: default;
+  opacity: 0.7;
+}
+
+.favorite.disabled:hover i {
+  transform: none;
+}
+
+.favorite i.active {
+  color: #e68139;
+}
+
+.tooltip-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tooltip {
+  position: absolute;
+  top: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  background: #e78356;
+  color: white;
+
+  padding: 6px 10px;
+  border-radius: 8px;
+
+  font-size: 12px;
+  white-space: nowrap;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition: 0.2s;
+}
+
+.tooltip-wrapper:hover .tooltip {
+  opacity: 1;
 }

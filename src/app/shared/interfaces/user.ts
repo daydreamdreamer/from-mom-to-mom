@@ -5,7 +5,6 @@ export interface User{
     email: string,
     age?: number,
     cityId?: number,
-    favorites?: number,
     recipes?: string[],
     profilePic?: string,
     created_at: string
@@ -34,4 +33,13 @@ export interface UserProfileUpdate {
     lastName: string,
     age?: number,
     cityId?: number
+}
+
+export interface TopUser {
+  _id: string;
+  firstName: string;
+  lastName: string;
+  profilePic?: string;
+  cityId?: number;
+  totalFavorites: number;
 }

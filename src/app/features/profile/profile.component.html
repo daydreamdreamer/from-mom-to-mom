@@ -1,6 +1,6 @@
 <div class="profile-wrapper">
     @if(!isEditMode()){
-    <app-profile-view [user]="user()" (edit)="onEdit()"></app-profile-view>
+    <app-profile-view [user]="user()" [totalFavorites]="totalFavorites" (edit)="onEdit()"></app-profile-view>
     }@else{
     <app-profile-edit [user]="user()" (save)="onSave($event)" (cancel)="onCancel()"></app-profile-edit>
     }

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { SuperMamasItemComponent } from '../../../shared/components/super-mamas-item/super-mamas-item.component';
-import { User } from '../../../shared/interfaces/user';
+import { TopUser } from '../../../shared/interfaces/user';
+import { RecipesService } from '../../../core/services/recipes.service';
 
 @Component({
   selector: 'app-super-mamas',
@@ -9,61 +10,13 @@ import { User } from '../../../shared/interfaces/user';
   styleUrl: './super-mamas.component.css'
 })
 export class SuperMamasComponent implements OnInit {
-  superMamas: User[] = [];
+  private recipeService = inject(RecipesService);
+  superMamas: TopUser[] = [];
 
   ngOnInit(): void {
-    this.superMamas = [
-      {
-        _id: "1",
-        firstName: 'Мария',
-        lastName: 'Николова',
-        email: "dsfsd@as.ss",
-        cityId: 3,
-        favorites: 24,
-        profilePic: '/images/profile-pic.png',
-        created_at: '24.04.2026'
-      },
-      {
-        _id: "2",
-        firstName: 'Елена',
-        lastName: 'Николова',
-        email: "dsfsd@as.ss",
-        cityId: 8,
-        favorites: 18,
-        profilePic: '/images/profile-pic.png',
-        created_at: '24.04.2026'
-      },
-      {
-        _id: "3",
-        firstName: 'Ива',
-        lastName: 'Николова',
-        email: "dsfsd@as.ss",
-        cityId: 9,
-        favorites: 32,
-        profilePic: '/images/profile-pic.png',
-        created_at: '24.04.2026'
-      },
-      {
-        _id: "4",
-        firstName: 'Десислава',
-        lastName: 'Николова',
-        email: "dsfsd@as.ss",
-        cityId: 3,
-        favorites: 15,
-        profilePic: '/images/profile-pic.png',
-        created_at: '24.04.2026'
-      },
-      {
-        _id: "5",
-        firstName: 'Анна',
-        lastName: 'Николова',
-        email: "dsfsd@as.ss",
-        cityId: 3,
-        favorites: 27,
-        profilePic: '/images/profile-pic.png',
-        created_at: '24.04.2026'
-      }
-    ];
+    this.recipeService.getTopUsers().subscribe(topUser => {
+      this.superMamas = topUser;
+    });
   }
 
 }

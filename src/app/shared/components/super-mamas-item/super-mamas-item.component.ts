@@ -1,5 +1,5 @@
 import { Component, inject, Input } from '@angular/core';
-import { User } from '../../interfaces/user';
+import { TopUser } from '../../interfaces/user';
 import { CityNamePipe } from '../../pipes/city-name.pipe';
 import { FavoritesComponent } from '../favorites/favorites.component';
 
@@ -12,7 +12,8 @@ import { FavoritesComponent } from '../favorites/favorites.component';
   providers: [CityNamePipe]
 })
 export class SuperMamasItemComponent {
-  @Input({required: true}) user!: User;
+  @Input({required: true}) topUser!: TopUser;
 
   cityName = inject(CityNamePipe);
+  defaultAvatar = '/images/profile-pic.png';
 }

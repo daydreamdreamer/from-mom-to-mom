@@ -5,7 +5,6 @@
   text-align: center;
 }
 
-/* HEADER */
 .profile-header {
   display: flex;
   flex-direction: column;
@@ -13,7 +12,6 @@
   margin-bottom: 20px;
 }
 
-/* AVATAR */
 .avatar {
   display: flex;
   justify-content: center;
@@ -28,21 +26,18 @@
   border: 3px solid #f5a25d;
 }
 
-/* FAVORITES (сърцето) */
 .favorites-wrapper {
-  margin-top: -18px; /* overlap ефект */
+  margin-top: 2px;
   display: flex;
   justify-content: center;
   width: 100%;
 }
 
-/* override на child component */
 .favorites-wrapper ::ng-deep .favorites {
   position: static;
   transform: none;
 }
 
-/* NAME */
 h2 {
   margin-top: 12px;
   font-size: 22px;
@@ -50,7 +45,6 @@ h2 {
   text-align: center;
 }
 
-/* FIELD STYLE (като input) */
 .profile-field {
   display: flex;
   align-items: center;
@@ -68,7 +62,6 @@ h2 {
   width: 18px;
 }
 
-/* BUTTON */
 .primary-btn {
   width: 100%;
   padding: 14px;

@@ -22,11 +22,14 @@
             <span class="category">
                 {{ labels[recipe.category] }}
             </span>
-            <div class="favorites">
-                <i class="fa-solid fa-heart"></i>
-                <i class="fa-light fa-heart"></i>
-                <span>{{ recipe.favorites }}</span>
-            </div>
+            @if (authService.isLoggedIn()) {
+                <app-favorites [count]="getFavoritesCount(recipe)" [isFavorited]="isRecipeFavorited(recipe, user()?._id)"
+                    (toggle)="onToggleFavorite()">
+                </app-favorites>
+            } @else {
+                <app-favorites [count]="getFavoritesCount(recipe)" [disabled]="true"></app-favorites>
+            }
+
         </div>
     </div>
 </div>

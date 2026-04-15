@@ -12,6 +12,7 @@ import { FavoritesComponent } from '../../../shared/components/favorites/favorit
 })
 export class ProfileViewComponent {
   @Input() user!: User | null;
+  @Input() totalFavorites = 0;
   @Output() edit = new EventEmitter<void>();
 
   cityName = inject(CityNamePipe);

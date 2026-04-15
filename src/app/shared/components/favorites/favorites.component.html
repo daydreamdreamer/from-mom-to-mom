@@ -1,4 +1,20 @@
-<div class="favorites">
-    <i class="fa-solid fa-heart"></i>
-    <span>{{ user.favorites || 0}}</span>
+<div class="favorite" (click)="onClick($event)" [class.disabled]="disabled">
+
+  <div class="tooltip-wrapper">
+
+    <i 
+      class="fa-heart"
+      [class.fa-solid]="isFavorited"
+      [class.fa-regular]="!isFavorited"
+      [class.active]="isFavorited">
+    </i>
+
+    <span>{{ count }}</span>
+
+    <div class="tooltip">
+      {{ tooltip }}
+    </div>
+
+  </div>
+
 </div>

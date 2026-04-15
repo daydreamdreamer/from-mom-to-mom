@@ -1,5 +1,4 @@
-import { Component, Input } from '@angular/core';
-import { User } from '../../interfaces/user';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-favorites',
@@ -8,6 +7,29 @@ import { User } from '../../interfaces/user';
   styleUrl: './favorites.component.css'
 })
 export class FavoritesComponent {
-  @Input({required: true}) user!: User;
+  @Input() count = 0;
+  @Input() isFavorited = false;
+  @Input() disabled = false;
 
+  @Output() toggle = new EventEmitter<void>();
+
+  onClick(event: Event) {
+    event.stopPropagation();
+
+    if (this.disabled) return;
+
+    this.toggle.emit();
+  }
+
+  get tooltip(): string {
+    if (this.disabled) {
+      return 'Общо харесвания';
+    }
+
+    if (this.isFavorited) {
+      return 'Премахни от любими';
+    }
+
+    return 'Добави в любими';
+  }
 }

@@ -42,10 +42,36 @@ export class RecipesComponent implements OnInit {
   }
 
   loadMyRecipes() {
-    console.log('my recipes');
+    this.recipeService.getMyRecipes().subscribe(recipes => {
+      this.recipes = recipes;
+    });
   }
 
   loadFavorites() {
-    console.log('favorite recipes');
+    this.recipeService.getFavoriteRecipes().subscribe(recipes => {
+      this.recipes = recipes;
+    });
+  }
+
+  onDelete(id: string) {
+    this.recipeService.deleteRecipe(id).subscribe({
+      next: () => {
+        this.recipes = this.recipes.filter(r => r._id !== id);
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    });
+  }
+
+  onFavoriteToggle(recipeId: string) {
+    this.recipeService.toggleFavorite(recipeId)
+      .subscribe(updated => {
+
+        this.recipes = this.recipes.map(r =>
+          r._id === updated._id ? updated : r
+        );
+
+      });
   }
 }

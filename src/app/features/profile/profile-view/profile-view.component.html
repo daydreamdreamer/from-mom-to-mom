@@ -6,7 +6,7 @@
         </div>
         <h2>{{ user.firstName }} {{ user.lastName }}</h2>
         <div class="favorites-wrapper">
-            <app-favorites [user]="user"></app-favorites>
+            <app-favorites [count]="totalFavorites" [isFavorited]="true" [disabled]="true"></app-favorites>
         </div>
     </div>
 

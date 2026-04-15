@@ -7,10 +7,12 @@ import { CategoryImagePipe } from '../../../shared/pipes/category-image.pipe';
 import { RecipesService } from '../../../core/services/recipes.service';
 import { DatePipe } from '@angular/common';
 import { AuthService } from '../../../core/services/auth.service';
+import { FavoritesComponent } from '../../../shared/components/favorites/favorites.component';
+import { isRecipeFavorited, getFavoritesCount } from '../../../shared/utils/recipe.utils';
 
 @Component({
   selector: 'app-recipe-content',
-  imports: [RouterLink, CookingTimePipe, CategoryImagePipe, DatePipe],
+  imports: [RouterLink, CookingTimePipe, CategoryImagePipe, DatePipe, FavoritesComponent],
   templateUrl: './recipe-content.component.html',
   styleUrl: './recipe-content.component.css'
 })
@@ -20,10 +22,14 @@ export class RecipeContentComponent implements OnInit {
   recipeService = inject(RecipesService);
   authService = inject(AuthService);
 
+  getFavoritesCount = getFavoritesCount;
+  isRecipeFavorited = isRecipeFavorited;
+
   recipe: Recipe | null = null;
   recipeId = '';
 
   labels = RecipeCategoryLabels;
+  user = this.authService.currentUser;
   isOwner = computed(() =>
     this.authService.isOwner(this.recipe?.author?._id)
   );
@@ -57,5 +63,13 @@ export class RecipeContentComponent implements OnInit {
         console.error(err);
       }
     });
+  }
+
+  onToggleFavorite() {
+    if (!this.recipe) return;
+    this.recipeService.toggleFavorite(this.recipe._id)
+      .subscribe(updated => {
+        this.recipe = updated;
+      });
   }
 }

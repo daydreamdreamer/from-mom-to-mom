@@ -1,9 +1,10 @@
 <div class="user-card">
-    <div class="user-name">{{ user.firstName }} {{user.lastName}}</div>
-    <div class="city">{{ user.cityId | cityName }}</div>
+    <div class="user-name">{{ topUser.firstName }} {{topUser.lastName}}</div>
+    <div class="city">{{ topUser.cityId | cityName }}</div>
     <div class="avatar-wrapper">
-        <img [src]="user.profilePic" alt="user" class="avatar" />
-        <app-favorites [user]="user">
-        </app-favorites>
+        <img [src]="topUser.profilePic || defaultAvatar" alt="user" class="avatar" />
+        <div class="favorites-badge"> <app-favorites [count]="topUser.totalFavorites" [isFavorited]="true" [disabled]="true"
+                class="favorites-badge"></app-favorites>
+        </div>
     </div>
 </div>

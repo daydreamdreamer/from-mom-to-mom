@@ -23,10 +23,13 @@
     <div class="meta">
         <span class="author">{{ recipe.author?.firstName}} {{recipe.author?.lastName }}</span>
         <span class="date">{{ recipe.created_at | date:'dd MMMM yyyy':'':'bg'}}</span>
-        <div class="favorites">
-            <i class="fa-solid fa-heart"></i>
-            <span>{{ recipe.favorites }}</span>
-        </div>
+        @if (authService.isLoggedIn()) {
+            <app-favorites [count]="getFavoritesCount(recipe)" [isFavorited]="isRecipeFavorited(recipe, user()?._id)"
+                (toggle)="onToggleFavorite()">
+            </app-favorites>
+        } @else {
+            <app-favorites [count]="getFavoritesCount(recipe)" [disabled]="true"></app-favorites>
+        }
     </div>
 
     <p class="category">
