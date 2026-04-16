@@ -30,6 +30,7 @@ The main goal of the platform is to build a small community where users can insp
 * Can view their favorite recipes
 * Can see total favorites collected
 
+* If a user navigates to an invalid URL, they are redirected to a dedicated **404 Page Not Found** screen.
 ---
 
 ###  Profile Flow
@@ -96,6 +97,39 @@ This improves user experience by allowing flexible recipe creation without prede
 * Updates dynamically when:
   * New user registers
   * Recipe is created or deleted
+    
+###  Latest Recipes Banner
+
+On the home page, the application displays a banner with the **latest 5 added recipes**.
+* They are displayed visually as a highlighted section
+* Each item is clickable and navigates to the recipe details page
+
+This feature helps users quickly discover the newest content on the platform.
+The latest recipes are retrieved via a dedicated API endpoint with a limit parameter.
+
+### Additional Pages
+
+The application includes several informational and utility pages to improve user experience:
+
+* **About Page**
+  Provides information about the purpose of the platform and its mission – connecting mothers through shared cooking inspiration.
+
+* **Terms Page**
+  Contains basic terms of use and guidelines for using the platform.
+
+* **Page Not Found (404)**
+  A fallback page that is displayed when the user navigates to a non-existing route.
+The 404 page provides navigation options to return to the main recipes page.
+
+### Category-Based Images
+
+Each recipe is displayed with a default image based on its selected category.
+* The system automatically assigns an image depending on the recipe category
+* This ensures consistent visual presentation even when users do not upload custom images
+* Improves user experience by providing clear visual differentiation between recipe types
+  
+This is implemented through a custom pipe that maps recipe categories to predefined images.
+
 
 ---
 
@@ -144,6 +178,26 @@ It demonstrates core Angular concepts such as:
 * Routing
 * State management (signals)
 * Reusable UI components
+
+##  Screenshots
+
+###  Home Page
+
+
+### Recipe List
+![Recipes](./screenshots/recipes.png)
+
+###  Recipe Details
+![Details](./screenshots/details.png)
+
+### Edit Recipe
+![Create](./screenshots/edit.png)
+
+### 👤 Profile Page
+![Profile](./screenshots/profile.png)
+
+###  Top Users
+![Top Users](./screenshots/topusers.png)
 
 # Setup Guide
 
