@@ -182,22 +182,35 @@ It demonstrates core Angular concepts such as:
 ##  Screenshots
 
 ###  Home Page
+Highlights the latest 5 added recipes. Each item is clickable and opens the recipe details page.
+Displays total number of recipes and registered users, updated dynamically.
+![Recipes](./screenshots/home.png)
 
+###  Top Users
+Shows the top 5 users ranked by total favorites received on their recipes.
+![Top Users](./screenshots/topusers.png)
 
 ### Recipe List
+Displays all available recipes with basic information, and provides quick access to details, edit and delete for logged-in users.
+Users can like and unlike recipes. The heart icon updates dynamically based on the user's interaction.
 ![Recipes](./screenshots/recipes.png)
 
 ###  Recipe Details
+Shows full recipe information, including ingredients, preparation steps, author, and cooking time. 
+Users can like and unlike recipes. The heart icon updates dynamically based on the user's interaction.
 ![Details](./screenshots/details.png)
 
 ### Edit Recipe
+Users can create/edit recipes and dynamically add or remove ingredients and preparation steps.
 ![Create](./screenshots/edit.png)
 
-### 👤 Profile Page
+###  Profile Page
+Displays user information along with total favorites collected from their recipes.
 ![Profile](./screenshots/profile.png)
 
-###  Top Users
-![Top Users](./screenshots/topusers.png)
+### Page not found
+Displayed when the user navigates to a non-existing route, with an option to return to the main page.
+![Page not found](./screenshots/pagenotfound.png)
 
 # Setup Guide
 
