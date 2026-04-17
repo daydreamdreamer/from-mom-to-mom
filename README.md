@@ -41,6 +41,44 @@ The main goal of the platform is to build a small community where users can insp
 
 ---
 
+## Main Application Flow
+
+1. User opens the Home page.
+2. User browses recipes.
+3. User selects a recipe and views details.
+4. User registers or logs in.
+5. User creates a new recipe.
+6. Recipe appears in the list.
+7. Users can favorite recipes.
+
+---
+
+## Data Structure
+
+### Recipe
+- _id
+- recipeName
+- category
+- cookingTime
+- ingredients
+- preparationDetails
+- favorites (array of user IDs)
+- created_at
+- author
+
+### User
+- _id
+- firstName
+- lastName
+- email
+- age
+- cityId
+- recipes
+- profilePic
+- created_at
+
+---
+  
 ## Core Features
 
 ### Recipes Management
@@ -163,6 +201,57 @@ Visual feedback includes:
 
 ---
 
+## Project Architecture
+
+The application follows a modular and scalable Angular architecture, organized into the following main folders:
+
+- core/
+  Contains global services and guards used across the application (e.g. authentication, route protection).
+
+- features/
+  Contains feature-based modules:
+  - auth/ – login and registration functionality
+  - recipes/ – recipes list, details, create, edit
+  - profile/ – user profile management
+  - home/ – landing page and latest recipes banner
+  - for-us/ – About page
+  - general-terms/ – Terms page
+  - not-found/ – 404 Page
+
+- layout/
+  Contains layout components such as:
+  - header/
+  - footer/
+
+- shared/
+  Contains reusable building blocks:
+  - components/ – reusable UI components (e.g. favorites)
+  - pipes/ – custom pipes (e.g. category image, city name)
+  - directives/ – custom directives
+  - validators/ – custom form validators
+  - interfaces/ – TypeScript interfaces
+  - constants/ – application constants
+  - utils/ – helper functions
+  - data/ – static data (e.g. cities)
+
+- app.component.*
+  Root component of the application
+
+The architecture follows separation of concerns and promotes reusability, maintainability, and scalability.
+
+---
+
+## Technologies Used
+
+- Angular
+- TypeScript
+- RxJS
+- Node.js
+- Express
+- MongoDB Atlas
+- REST API
+- CSS
+
 ## Summary
 
 The application provides a complete user experience for:
@@ -268,7 +357,7 @@ npm install
 
 ---
 
-## 🔗 Backend Connection
+##  Backend Connection
 
 The frontend communicates with a REST API built with Node.js and Express.
 
