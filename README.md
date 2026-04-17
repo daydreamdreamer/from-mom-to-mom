@@ -285,7 +285,7 @@ Shows the top 5 users ranked by total favorites received on their recipes.
 
 ---
 
-### Recipe List
+### Recipes List
 Displays all available recipes with basic information, and provides quick access to details, edit and delete for logged-in users.
 Users can like and unlike recipes. The heart icon updates dynamically based on the user's interaction.
 
