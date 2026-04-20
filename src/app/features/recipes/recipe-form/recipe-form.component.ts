@@ -1,10 +1,22 @@
 import { Component, EventEmitter, Input, Output, OnChanges, SimpleChanges, inject } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, AbstractControl, ValidationErrors } from '@angular/forms';
 import { Recipe, RecipeCategory, RecipeDto } from '../../../shared/interfaces/recipe';
 import { RecipeCategoryLabels } from '../../../shared/constants/recipe-category.map';
 import { timeValidator } from '../../../shared/validators/time.validator';
 import { DynamicListInputComponent } from '../../../shared/components/dynamic-list-input/dynamic-list-input.component';
 import { InputErrorDirective } from "../../../shared/directives/input-error.directive";
+
+function requiredArrayValidator(control: AbstractControl): ValidationErrors | null {
+  const value = control.value as string[] | null;
+
+  if (!Array.isArray(value) || value.length === 0) {
+    return { required: true };
+  }
+
+  const hasEmptyItem = value.some(v => !v || v.trim() === '');
+
+  return hasEmptyItem ? { required: true } : null;
+}
 
 @Component({
   selector: 'app-recipe-form',
@@ -18,6 +30,7 @@ export class RecipeFormComponent implements OnChanges {
 
   @Input() initialData: Recipe | null = null;
   @Input() isEditMode = false;
+  @Input() isLoading = false;
 
   @Output() formSubmit = new EventEmitter<RecipeDto>();
 
@@ -36,8 +49,8 @@ export class RecipeFormComponent implements OnChanges {
       },
       { validators: timeValidator }
     ),
-    ingredients: [[] as string[]],
-    preparationDetails: [[] as string[]]
+    ingredients: [[], [requiredArrayValidator]],
+    preparationDetails: [[], [requiredArrayValidator]]
   });
 
   get hoursCtrl() {

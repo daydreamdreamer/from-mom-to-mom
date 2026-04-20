@@ -99,8 +99,12 @@
     <app-dynamic-list-input formControlName="ingredients" label="Съставки"></app-dynamic-list-input>
     <app-dynamic-list-input formControlName="preparationDetails" label="Начин на приготвяне"></app-dynamic-list-input>
 
-    <button class="btn" type="submit" [disabled]="recipeForm.invalid">
-      {{ isEditMode ? 'Запази промените' : 'Добави рецепта' }}
+    <button class="btn" type="submit" [disabled]="recipeForm.invalid || isLoading">
+      @if(!isLoading){
+        {{ isEditMode ? 'Запази промените' : 'Добави рецепта' }}
+      } @else {
+      <span class="spinner"></span>
+      }
     </button>
 
   </form>

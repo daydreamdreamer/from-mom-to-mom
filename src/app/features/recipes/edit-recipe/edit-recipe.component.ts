@@ -1,8 +1,9 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RecipesService } from '../../../core/services/recipes.service';
 import { Recipe, RecipeDto } from '../../../shared/interfaces/recipe';
 import { RecipeFormComponent } from '../recipe-form/recipe-form.component';
+import { getErrorMessage } from '../../../shared/utils/error.util';
 
 @Component({
   selector: 'app-edit-recipe',
@@ -17,6 +18,8 @@ export class EditRecipeComponent implements OnInit {
 
   recipe: Recipe | null = null;
   recipeId = '';
+  errorMessage = signal('');
+  isLoading = signal(false);
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -33,9 +36,15 @@ export class EditRecipeComponent implements OnInit {
   }
 
   onUpdate(data: RecipeDto) {
+    this.isLoading.set(true);
+
     this.recipeService.updateRecipe(this.recipeId, data).subscribe({
       next: (recipe) => {
         this.router.navigate(['/recipes', recipe._id]);
+      },
+      error: (err) => {
+        this.errorMessage.set(getErrorMessage(err));
+        this.isLoading.set(false);
       }
     });
   }

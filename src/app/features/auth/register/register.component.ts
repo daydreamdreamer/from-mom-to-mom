@@ -7,6 +7,7 @@ import { passwordsMatchValidator } from '../../../shared/validators/passwords-ma
 import { InputErrorDirective } from '../../../shared/directives/input-error.directive';
 import { CitySelectComponent } from '../../../shared/components/city-select/city-select.component';
 import { StatsService } from '../../../core/services/stats.service';
+import { getErrorMessage } from '../../../shared/utils/error.util';
 
 
 @Component({
@@ -65,14 +66,13 @@ export class RegisterComponent {
     this.statsService
       .onUserRegistered(this.authService.register(userData))
       .subscribe({
-        next: (user) => {
-          this.authService.setSession(user);
+        next: () => {
           this.isLoading = false;
           this.router.navigate(['/recipes']);
         },
         error: (err) => {
           this.isLoading = false;
-          this.errorMessage = err.error?.message || 'Неусепешна регистрация. Опитай отново';
+          this.errorMessage = getErrorMessage(err);
         }
       });
   }

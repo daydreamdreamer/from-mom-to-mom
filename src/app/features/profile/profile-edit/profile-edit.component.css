@@ -5,7 +5,6 @@
   text-align: center;
 }
 
-/* HEADER */
 .profile-header {
   display: flex;
   flex-direction: column;
@@ -13,7 +12,6 @@
   margin-bottom: 20px;
 }
 
-/* AVATAR */
 .avatar img {
   width: 110px;
   height: 110px;
@@ -22,13 +20,13 @@
   border: 3px solid #f5a25d;
 }
 
-/* ROW (име + фамилия) */
+
 .row {
   display: flex;
   gap: 10px;
 }
 
-/* FIELD (като view mode) */
+
 .profile-field {
   display: flex;
   align-items: center;
@@ -55,13 +53,11 @@
   color: #333;
 }
 
-/* readonly стил (email) */
 .profile-field input[readonly] {
   color: #888;
   cursor: not-allowed;
 }
 
-/* ACTIONS */
 .actions {
   display: flex;
   gap: 10px;
@@ -86,7 +82,6 @@
   transform: translateY(-1px);
 }
 
-/* SECONDARY BUTTON */
 .secondary-btn {
   flex: 1;
   padding: 14px;

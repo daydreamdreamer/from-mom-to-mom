@@ -16,19 +16,15 @@ export class HeaderComponent {
   isLoggedIn = this.authService.isLoggedIn;
   username = computed(() => this.authService.currentUser()?.firstName ?? '');
 
-  onLogout() : void{
+  onLogout(): void {
     this.authService.logout().subscribe({
       next: () => {
-        this.authService.clearSession();
         this.router.navigate(['/home']);
       },
       error: () => {
-        this.authService.clearSession();
         this.router.navigate(['/home']);
       }
     });
-    
-    //console.log(this.isLoggedIn);
   }
 
 }

@@ -14,6 +14,7 @@ export class ProfileEditComponent implements OnChanges {
   private fb = inject(FormBuilder);
 
   @Input() user!: User | null;
+  @Input() isLoading = false;
 
   @Output() save = new EventEmitter<UserProfileUpdate>();
   @Output() cancel = new EventEmitter<void>();

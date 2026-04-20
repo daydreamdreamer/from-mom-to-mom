@@ -2,6 +2,7 @@ import { Injectable, inject, signal, computed } from '@angular/core';
 import { UserProfileUpdate, User, UserForAuth, LoginCredentials } from '../../shared/interfaces/user';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,16 +16,25 @@ export class AuthService {
   isLoggedIn = computed(() => this.user() !== null);
   currentUser = computed(() => this.user());
 
-  login(credentials: LoginCredentials): Observable<User> {
-    return this.http.post<User>(`${this.apiUrl}/login`, credentials, { withCredentials: true });
+  login(credentials: LoginCredentials) {
+    return this.http.post<User>(`${this.apiUrl}/login`, credentials, { withCredentials: true })
+      .pipe(
+        tap(user => this.setSession(user))
+      );
   }
 
-  register(userData: UserForAuth): Observable<User> {
-    return this.http.post<User>(`${this.apiUrl}/register`, userData, { withCredentials: true });
+  register(userData: UserForAuth) {
+    return this.http.post<User>(`${this.apiUrl}/register`, userData, { withCredentials: true })
+      .pipe(
+        tap(user => this.setSession(user))
+      );
   }
 
-  logout(): Observable<void> {
-    return this.http.post<void>(`${this.apiUrl}/logout`, {}, { withCredentials: true });
+  logout() {
+    return this.http.post<void>(`${this.apiUrl}/logout`, {}, { withCredentials: true })
+      .pipe(
+        tap(() => this.clearSession())
+      );
   }
 
   getProfile(): Observable<User> {

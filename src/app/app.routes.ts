@@ -1,16 +1,7 @@
 import { Routes } from '@angular/router';
 
-import { HomeComponent } from './features/home/home.component';
 import { RecipesComponent } from './features/recipes/recipes.component';
 import { NotFoundComponent } from './features/not-found/not-found.component';
-import { LoginComponent } from './features/auth/login/login.component';
-import { RegisterComponent } from './features/auth/register/register.component';
-import { RecipeContentComponent } from './features/recipes/recipe-content/recipe-content.component';
-import { ForUsComponent } from './features/for-us/for-us.component';
-import { GeneralTermsComponent } from './features/general-terms/general-terms.component';
-import { ProfileComponent } from './features/profile/profile.component';
-import { AddRecipeComponent } from './features/recipes/add-recipe/add-recipe.component';
-import { EditRecipeComponent } from './features/recipes/edit-recipe/edit-recipe.component';
 import { authGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [

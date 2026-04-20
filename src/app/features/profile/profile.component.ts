@@ -11,7 +11,7 @@ import { RecipesService } from '../../core/services/recipes.service';
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
-export class ProfileComponent implements OnInit{
+export class ProfileComponent implements OnInit {
   private authService = inject(AuthService);
   private recipesService = inject(RecipesService);
 
@@ -32,7 +32,7 @@ export class ProfileComponent implements OnInit{
   }
 
   onSave(updatedUser: UserProfileUpdate) {
-    this.isEditMode.set(false);
+    this.isLoading.set(true);
 
     this.authService.updateProfile(updatedUser).subscribe({
       next: (user) => {
@@ -40,11 +40,10 @@ export class ProfileComponent implements OnInit{
         this.isLoading.set(false);
         this.isEditMode.set(false);
       },
-      error: (err) => {
+      error: () => {
         this.isLoading.set(false);
-        //this.errorMessage.set(err.error?.message || 'Failed to update profile');
       }
-    })
+    });
   }
 
   onCancel() {
