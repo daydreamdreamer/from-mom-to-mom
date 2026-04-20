@@ -1,4 +1,4 @@
-# FromMomToMom (Functional Guide)
+3+-# FromMomToMom (Functional Guide)
 
 ## Application Purpose
 
@@ -321,7 +321,7 @@ Displayed when the user navigates to a non-existing route, with an option to ret
 
 # Setup Guide
 
-## Installation
+##  Installation
 
 ### 1. Clone the repositories
 
@@ -357,7 +357,39 @@ npm install
 
 ---
 
-##  Backend Connection
+##  Running the Application
+
+### Start Backend
+
+```
+cd from-mom-to-mom-backend
+npm start
+```
+
+The backend will run on:
+
+```
+http://localhost:3000
+```
+
+---
+
+### Start Frontend
+
+```
+cd from-mom-to-mom
+ng serve
+```
+
+The frontend will run on:
+
+```
+http://localhost:4200
+```
+
+---
+
+## Backend Connection
 
 The frontend communicates with a REST API built with Node.js and Express.
 
@@ -367,13 +399,15 @@ The frontend communicates with a REST API built with Node.js and Express.
 http://localhost:3000/api
 ```
 
-* Main features connected to backend:
+---
 
-  * Authentication
-  * Recipes CRUD
-  * Favorites system
-  * Statistics
-  * Top users aggregation
+## Main Features
+
+* Authentication (login/register/logout)
+* User profile management
+* Recipes CRUD (create, read, update, delete)
+* Favorites system
+* User statistics
 
 ---
 
@@ -384,4 +418,15 @@ https://github.com/daydreamdreamer/from-mom-to-mom
 
 Backend:
 https://github.com/daydreamdreamer/from-mom-to-mom-backend
+
+---
+
+## Notes
+
+* Make sure the backend is running before starting the frontend.
+* The application uses cookies (`withCredentials: true`) for authentication.
+* If you encounter authentication issues, clear browser cookies and restart both servers.
+
+---
+
 
